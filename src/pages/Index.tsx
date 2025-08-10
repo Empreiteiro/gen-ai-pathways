@@ -1,10 +1,10 @@
 import { CourseCard } from "@/components/CourseCard";
-import { courses } from "@/data/courses";
 import { SEO } from "@/components/SEO";
-import { Bot, Brain, Cpu, Github, Linkedin, Mail, Youtube } from "lucide-react";
+import { courses } from "@/data/courses";
+import { Github, Linkedin, Mail } from "lucide-react";
 
 const Index = () => {
-  const icons = { introducao: Bot, fundamentos: Brain, avancado: Cpu } as const;
+  // icons removidos dos cards
 
   const jsonLd = {
     '@context': 'https://schema.org',
@@ -52,7 +52,7 @@ const Index = () => {
                 description={c.description}
                 image={c.image}
                 imageAlt={c.imageAlt}
-                icon={c.icon}
+                 
               />
             ))}
           </div>
@@ -60,17 +60,14 @@ const Index = () => {
       </main>
 
       <footer className="border-t border-border">
-        <div className="container py-10 grid gap-6 md:grid-cols-2 items-center">
-          <div>
-            <p className="text-sm text-muted-foreground">
-              © {new Date().getFullYear()} IA Academy — Contato: <a href="mailto:contato@ia.academy" className="story-link">contato@ia.academy</a>
-            </p>
-          </div>
-          <nav className="flex items-center justify-start md:justify-end gap-4 text-muted-foreground">
-            <a href="https://github.com/" aria-label="GitHub" className="hover:text-foreground"><Github /></a>
-            <a href="https://www.linkedin.com/" aria-label="LinkedIn" className="hover:text-foreground"><Linkedin /></a>
-            <a href="https://www.youtube.com/" aria-label="YouTube" className="hover:text-foreground"><Youtube /></a>
-            <a href="mailto:contato@ia.academy" aria-label="Email" className="hover:text-foreground"><Mail /></a>
+        <div className="container py-10 grid gap-4 md:grid-cols-[1fr_auto_1fr] items-center">
+          <p className="text-sm text-muted-foreground text-center md:col-start-2">
+            © {new Date().getFullYear()} IA Academy
+          </p>
+          <nav className="flex items-center justify-center md:justify-end gap-4 text-muted-foreground md:col-start-3">
+            <a href="https://github.com/Empreiteiro/gen-ai-pathways" aria-label="GitHub" className="hover:text-foreground"><Github /></a>
+            <a href="https://www.linkedin.com/in/lucas-democh-goularte-8b290356/" aria-label="LinkedIn" className="hover:text-foreground"><Linkedin /></a>
+            <a href="mailto:democh@oriontech.me" aria-label="Email" className="hover:text-foreground"><Mail /></a>
           </nav>
         </div>
       </footer>
