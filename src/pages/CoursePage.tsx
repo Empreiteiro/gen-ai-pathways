@@ -1,8 +1,8 @@
-import { useParams, Link } from "react-router-dom";
-import { courses } from "@/data/courses";
-import { SlideDeck } from "@/components/SlideDeck";
 import { SEO } from "@/components/SEO";
+import { SlideDeck } from "@/components/SlideDeck";
+import { courses } from "@/data/courses";
 import { ArrowLeft } from "lucide-react";
+import { Link, useParams } from "react-router-dom";
 
 const CoursePage = () => {
   const { id } = useParams<{ id: string }>();
@@ -33,20 +33,17 @@ const CoursePage = () => {
         jsonLd={jsonLd}
       />
       <header className="w-full border-b border-border bg-gradient-to-br from-[hsl(var(--brand-start))] to-[hsl(var(--brand-end))]">
-        <div className="container py-10 md:py-14 text-white">
+        <div className="container py-6 md:py-8 text-white">
           <Link to="/" className="inline-flex items-center gap-2 mb-4 opacity-90 hover:opacity-100">
             <ArrowLeft /> <span>Voltar</span>
           </Link>
-          <div className="grid md:grid-cols-2 gap-8 items-center">
-            <div>
-              <h1 className="text-3xl md:text-5xl font-bold leading-tight font-display">
-                {course.title}
-              </h1>
-              <p className="mt-4 text-white/90 max-w-prose">
-                {course.description}
-              </p>
-            </div>
-            <img src={course.image} alt={course.imageAlt} className="rounded-lg shadow-xl" loading="lazy" />
+          <div>
+            <h1 className="text-3xl md:text-4xl font-bold leading-tight font-display">
+              {course.title}
+            </h1>
+            <p className="mt-3 text-white/90 max-w-prose">
+              {course.description}
+            </p>
           </div>
         </div>
       </header>
