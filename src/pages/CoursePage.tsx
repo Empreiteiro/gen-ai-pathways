@@ -1,0 +1,65 @@
+import { useParams, Link } from "react-router-dom";
+import { courses } from "@/data/courses";
+import { SlideDeck } from "@/components/SlideDeck";
+import { SEO } from "@/components/SEO";
+import { ArrowLeft } from "lucide-react";
+
+const CoursePage = () => {
+  const { id } = useParams<{ id: string }>();
+  const course = courses.find((c) => c.id === id);
+
+  if (!course) {
+    return (
+      <main className="container py-16">
+        <h1 className="text-3xl font-bold mb-4">Curso não encontrado</h1>
+        <Link to="/" className="story-link text-primary">Voltar para a página inicial</Link>
+      </main>
+    );
+  }
+
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Course',
+    name: course.title,
+    description: course.description,
+    provider: { '@type': 'Organization', name: 'IA Academy' },
+  };
+
+  return (
+    <>
+      <SEO
+        title={`${course.title} | Cursos de IA`}
+        description={course.description}
+        jsonLd={jsonLd}
+      />
+      <header className="w-full border-b border-border bg-gradient-to-br from-[hsl(var(--brand-start))] to-[hsl(var(--brand-end))]">
+        <div className="container py-10 md:py-14 text-white">
+          <Link to="/" className="inline-flex items-center gap-2 mb-4 opacity-90 hover:opacity-100">
+            <ArrowLeft /> <span>Voltar</span>
+          </Link>
+          <div className="grid md:grid-cols-2 gap-8 items-center">
+            <div>
+              <h1 className="text-3xl md:text-5xl font-bold leading-tight font-display">
+                {course.title}
+              </h1>
+              <p className="mt-4 text-white/90 max-w-prose">
+                {course.description}
+              </p>
+            </div>
+            <img src={course.image} alt={course.imageAlt} className="rounded-lg shadow-xl" loading="lazy" />
+          </div>
+        </div>
+      </header>
+      <main className="container py-10 md:py-16">
+        <SlideDeck slides={course.slides} />
+      </main>
+      <footer className="border-t border-border">
+        <div className="container py-8 text-sm text-muted-foreground">
+          © {new Date().getFullYear()} IA Academy — Todos os direitos reservados
+        </div>
+      </footer>
+    </>
+  );
+};
+
+export default CoursePage;
