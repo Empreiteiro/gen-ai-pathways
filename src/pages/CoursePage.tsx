@@ -1,3 +1,4 @@
+import Footer from "@/components/Footer";
 import { SEO } from "@/components/SEO";
 import { SlideDeck } from "@/components/SlideDeck";
 import { courses } from "@/data/courses";
@@ -50,11 +51,7 @@ const CoursePage = () => {
       <main className="container py-10 md:py-16 flex-1">
         <SlideDeck slides={course.slides} />
       </main>
-      <footer className="border-t border-border">
-        <div className="container py-8 text-sm text-muted-foreground">
-          © {new Date().getFullYear()} IA Academy — Todos os direitos reservados
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 };
