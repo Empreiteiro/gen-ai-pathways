@@ -26,7 +26,7 @@ const CoursePage = () => {
   };
 
   return (
-    <>
+    <div className="min-h-screen flex flex-col">
       <SEO
         title={`${course.title} | Cursos de IA`}
         description={course.description}
@@ -47,7 +47,7 @@ const CoursePage = () => {
           </div>
         </div>
       </header>
-      <main className="container py-10 md:py-16">
+      <main className="container py-10 md:py-16 flex-1">
         <SlideDeck slides={course.slides} />
       </main>
       <footer className="border-t border-border">
@@ -55,7 +55,7 @@ const CoursePage = () => {
           © {new Date().getFullYear()} IA Academy — Todos os direitos reservados
         </div>
       </footer>
-    </>
+    </div>
   );
 };
 

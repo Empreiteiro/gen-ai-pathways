@@ -1,73 +1,106 @@
-# Welcome to your Lovable project
+# Gen AI Pathways — Plataforma de Cursos de IA Generativa
 
-## Project info
+Aprenda Inteligência Artificial do básico ao avançado, com foco em IA generativa, por meio de trilhas curtas e objetivas em formato de slides interativos.
 
-**URL**: https://lovable.dev/projects/5fce2c2a-427c-4df2-85ec-04ff1df6fcc5
+Este projeto oferece três cursos complementares que cobrem desde conceitos introdutórios até aplicações práticas e temas avançados. A experiência é leve, responsiva e otimizada para SEO.
 
-## How can I edit this code?
+## Visão geral
 
-There are several ways of editing your application.
+Gen AI Pathways é uma plataforma educacional simples e extensível construída em React. Cada curso é definido via dados estruturados e renderizado como um deck de slides dentro da aplicação. Ideal para estudos individuais, workshops rápidos e trilhas internas de capacitação.
 
-**Use Lovable**
+### Para quem é
+- Iniciantes que querem entender IA e IA generativa do zero
+- Profissionais que desejam fundamentos práticos
+- Times e instrutores que precisam de um material direto ao ponto
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/5fce2c2a-427c-4df2-85ec-04ff1df6fcc5) and start prompting.
+## Conteúdos dos cursos
 
-Changes made via Lovable will be committed automatically to this repo.
+1. Introdução à Inteligência Artificial e IA Generativa (`introducao`)
+   - O que é IA e IA generativa, breve história, áreas da IA
+   - Exemplos práticos, riscos de alucinação, ética e impacto
 
-**Use your preferred IDE**
+2. Fundamentos e Técnicas da IA (`fundamentos`)
+   - Aprendizado supervisionado/não supervisionado/reforço, redes neurais
+   - Transformers, difusão, embeddings, vector stores, RAG, prompt engineering
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+3. IA Generativa Avançada e Aplicações Reais (`avancado`)
+   - Arquiteturas, LLMs, imagem/áudio/vídeo, aplicações e tendências (AGI, segurança)
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+Os conteúdos dos slides ficam em `src/data/courses.ts`.
 
-Follow these steps:
+## Principais recursos
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+- UI moderna com componentes `shadcn-ui` e Tailwind
+- Navegação por trilhas de curso e decks de slides
+- SEO pronto: titles, descriptions e JSON-LD (`ItemList`, `Course`)
+- Totalmente responsivo e acessível
+- Estrutura de dados simples para criar/editar cursos
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+## Tecnologias
 
-# Step 3: Install the necessary dependencies.
-npm i
+- React + Vite + TypeScript
+- Tailwind CSS + shadcn-ui (Radix UI)
+- React Router
+- Lucide Icons
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+## Como rodar localmente
+
+Pré-requisitos: Node.js 18+ e npm.
+
+```bash
+git clone <URL-DO-REPO>
+cd gen-ai-pathways
+npm install
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+Aplicação abrirá em `http://localhost:5173` (padrão do Vite).
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+### Scripts úteis
+- `npm run dev`: ambiente de desenvolvimento
+- `npm run build`: build de produção
+- `npm run preview`: pré-visualização do build
+- `npm run lint`: checagem de lint
 
-**Use GitHub Codespaces**
+## Estrutura do projeto (essencial)
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+```
+src/
+  pages/
+    Index.tsx         # Página inicial com cards dos cursos
+    CoursePage.tsx    # Página de um curso com o deck de slides
+  data/
+    courses.ts        # Definição dos cursos e seus slides
+  components/
+    CourseCard.tsx    # Card de curso
+    SlideDeck.tsx     # Renderização dos slides
+    SEO.tsx           # Metadados e JSON-LD
+```
 
-## What technologies are used for this project?
+## Como adicionar ou editar um curso
 
-This project is built with:
+1. Edite `src/data/courses.ts`
+2. Adicione um novo objeto ao array `courses` com:
+   - `id`: identificador único (ex.: `introducao`)
+   - `title`, `description`, `image`, `imageAlt`, `icon`
+   - `slides`: lista de slides com `title` e `bullets`
+3. A rota é resolvida automaticamente em `/curso/<id>` via `CoursePage`.
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+## SEO e acessibilidade
 
-## How can I deploy this project?
+- Componente `SEO` gera tags básicas + JSON-LD (`ItemList` na home, `Course` na página do curso)
+- Marcadores, hierarquia de headings e contraste respeitam boas práticas
 
-Simply open [Lovable](https://lovable.dev/projects/5fce2c2a-427c-4df2-85ec-04ff1df6fcc5) and click on Share -> Publish.
+## Roadmap (sugestões)
 
-## Can I connect a custom domain to my Lovable project?
+- Busca por conteúdo dentro dos slides
+- Progresso do aluno e salvamento local
+- Exportação/compartilhamento de trilhas
+- Suporte a conteúdo multimídia nos slides
 
-Yes, you can!
+## Contato
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+- GitHub: https://github.com/Empreiteiro/gen-ai-pathways
+- LinkedIn: https://www.linkedin.com/in/lucas-democh-goularte-8b290356/
+- E-mail: democh@oriontech.me
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)

@@ -19,7 +19,7 @@ const Index = () => {
   };
 
   return (
-    <>
+    <div className="min-h-screen flex flex-col">
       <SEO
         title="Cursos de Inteligência Artificial | Aprenda IA do Básico ao Avançado"
         description="Três cursos modernos de IA e IA generativa com conteúdo claro, prático e atualizado. Do início ao avançado."
@@ -40,7 +40,7 @@ const Index = () => {
         </div>
       </header>
 
-      <main className="container py-12 md:py-16">
+      <main className="container py-12 md:py-16 flex-1">
         <section aria-labelledby="cursos" className="animate-fade-in">
           <h2 id="cursos" className="sr-only">Cursos em destaque</h2>
           <div className="grid gap-6 md:grid-cols-3">
@@ -71,7 +71,7 @@ const Index = () => {
           </nav>
         </div>
       </footer>
-    </>
+    </div>
   );
 };
 
