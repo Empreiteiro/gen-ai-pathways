@@ -78,6 +78,7 @@ export const courses: Course[] = [
         ],
         
       },
+      
       {
         title: "Breve história e evolução da IA",
         description:
@@ -174,21 +175,49 @@ export const courses: Course[] = [
             title: "Assistentes",
             content:
               "Copilotos de escrita e raciocínio que aceleram a primeira versão e ajudam a estruturar ideias. Em prática: rascunhos de e‑mails com tom adequado, preparação de briefings e respostas sugeridas para atendimento. Para confiabilidade, forneça contexto claro (objetivo, público, restrições) e peça checagens de coerência e referências quando houver fatos críticos.",
+            subtopics: [
+              {
+                title: "Exemplos",
+                content:
+                  "Plataformas: ChatGPT, Claude, Microsoft Copilot, Gemini.",
+              },
+            ],
           },
           {
             title: "Imagens",
             content:
               "Sistemas de geração e edição guiados por texto que agilizam marketing e design. Úteis para criar variações de criativos, mockups e thumbnails, além de edições como remoção/adição de elementos e ajuste de estilo mantendo composição. Observe políticas de licença e evite uso indevido de marcas ou rostos sem autorização.",
+            subtopics: [
+              {
+                title: "Exemplos",
+                content:
+                  "Plataformas: Midjourney, DALL·E, Stable Diffusion (Automatic1111/ComfyUI).",
+              },
+            ],
           },
           {
             title: "Produtividade",
             content:
               "Automação de etapas repetitivas e padronização de entregas. Exemplos: sumarização de documentos longos, extração estruturada de campos, geração de relatórios e apoio a código (boilerplate, testes e pequenas refatorações). Mesmo com alto ganho de velocidade, mantenha validação por linters, testes e revisão humana.",
+            subtopics: [
+              {
+                title: "Exemplos",
+                content:
+                  "Plataformas: Cursor, Lovable, V0, Notion AI, Google Workspace (Gemini), Microsoft 365 Copilot.",
+              },
+            ],
           },
           {
             title: "Educação e criatividade",
             content:
               "Aprendizagem personalizada e aceleração de ideação. A ferramenta pode explicar conceitos no seu nível, propor exercícios progressivos, sugerir roteiros e storyboards e apoiar protótipos rápidos. Preserve autoria e ética acadêmica: cite fontes, declare uso de IA quando necessário e evite submissões não originais.",
+            subtopics: [
+              {
+                title: "Exemplos",
+                content:
+                  "Plataformas: Khanmigo (Khan Academy), Canva Magic Studio, Adobe Firefly.",
+              },
+            ],
           },
         ],
         bullets: [
@@ -278,6 +307,46 @@ export const courses: Course[] = [
         ],
       },
       {
+        title: "LLMs (Large Language Models)",
+        description:
+          "Modelos de linguagem de grande porte capazes de compreender e gerar texto. Estão por trás de assistentes, copilotos de escrita/código e diversas automações de conhecimento.",
+        topics: [
+          {
+            title: "O que são LLMs",
+            content:
+              "Redes neurais treinadas em grandes corpora de texto para prever o próximo token, aprendendo padrões de linguagem, conhecimento factual e estilos. Com instruções e reforço, passam a seguir comandos em linguagem natural.",
+          },
+          {
+            title: "Como funcionam em linhas gerais",
+            content:
+              "Usam a arquitetura Transformer (atenção) para considerar contexto amplo; representam palavras como embeddings e geram saídas token a token. O comportamento pode ser ajustado por temperatura, top‑p e políticas.",
+          },
+          {
+            title: "Usos no dia a dia",
+            content:
+              "Rascunho e revisão de textos, resumo de documentos, tradução, brainstorming, atendimento ao cliente, respostas a perguntas sobre materiais fornecidos (RAG) e copilotos de programação que sugerem código e testes.",
+          },
+          {
+            title: "Limitações e cuidados",
+            content:
+              "Podem alucinar, têm janela de contexto finita e custos variáveis. Sempre forneça contexto, restrinja escopo, valide informações críticas e trate privacidade de dados ao usar prompts.",
+          },
+        ],
+        bullets: [
+          "Treinados para prever o próximo token em grandes corpora",
+          "Aplicações: escrita, resumo, tradução, atendimento e código",
+          "Exigem contexto e validação para usos críticos",
+        ],
+        extraImages: [
+          {
+            src: import.meta.env.BASE_URL + "sketchnote_agents.png",
+            caption: "Diferentes usos dos LLMs",
+            scale: 0.75,
+          },
+        ],
+        extraImagesPosition: 'after',
+      },
+      {
         title: "Agentes (visão geral)",
         description:
           "Agentes combinam LLM + ferramentas + memória para perceber, raciocinar e agir em direção a um objetivo. Eles decompõem problemas, escolhem ações, verificam resultados e replanejam até concluir a tarefa, sob políticas e guardrails.",
@@ -316,6 +385,12 @@ export const courses: Course[] = [
             caption: "Fonte: Gartner — Mind the AI Agency Gap (2024)",
             scale: 0.8,
             note: "Como ler: no eixo esquerdo, as capacidades de baixa agência (estático, reativo, tarefas simples, ambiente simples, supervisionado). No eixo direito, alta agência (adaptativo, planejamento proativo, metas complexas, ambiente complexo, autônomo). Os pontos mostram a posição relativa de agentes humanos, chatbots determinísticos e assistentes baseados em LLM. O ‘agency gap’ representa a distância entre soluções atuais e a atuação autônoma desejada. Use o gráfico para avaliar onde seu caso de uso está hoje e que capacidades (planejamento, ferramentas, memória, guardrails) seriam necessárias para avançar com segurança."
+          },
+          {
+            src: import.meta.env.BASE_URL + "sketchnote_agents.png",
+            alt: "Esboço comparando RAG e agentes",
+            caption: "Sketchnote: RAG vs. Agent — contexto, memória, ferramentas e raciocínio",
+            scale: 0.9,
           },
         ],
         extraImagesPosition: 'after',
@@ -444,58 +519,6 @@ export const courses: Course[] = [
           "Mitigação: citar fontes, verificar com RAG, chain-of-thought moderado e validações externas.",
           "Uso de ferramentas: consultas a bases confiáveis, chamadas a APIs e checagens programáticas.",
           "Fundamental para aplicações críticas (jurídico, saúde, finanças).",
-        ],
-      },
-      {
-        title: "Considerações éticas e impacto",
-        description:
-          "Uso responsável de IA requer atenção a viés, privacidade, segurança, transparência e impacto no trabalho/sociedade, com governança contínua e prestação de contas.",
-        topics: [
-          {
-            title: "Viés e transparência",
-            content:
-              "Meça desempenho por grupos (equidade), mitigue vieses em dados/prompts, e publique documentação (‘model cards’, ‘data sheets’) com escopo, limites e riscos conhecidos. Explique critérios quando decisões afetam pessoas.",
-          },
-          {
-            title: "Privacidade e segurança",
-            content:
-              "Aplique minimização/coleta adequada, anonimização/pseudonimização, criptografia e controles de acesso. Conduza DPIA/relatórios de impacto quando necessário e defina políticas de retenção. Evite inserção de dados sensíveis em prompts.",
-          },
-          {
-            title: "Impacto socioeconômico",
-            content:
-              "Promova requalificação e desenho de funções ‘copilotadas’. Avalie efeitos distributivos (quem ganha/perde) e adote métricas de produtividade/qualidade com salvaguardas trabalhistas.",
-          },
-          {
-            title: "Governança",
-            content:
-              "Estabeleça políticas de uso, revisão de prompts/dados, auditoria e trilhas de decisão. Faça red‑teaming, avaliação de segurança e planos de resposta a incidentes. Nomeie responsáveis e mantenha supervisão multissetorial.",
-          },
-          {
-            title: "Checklist",
-            content:
-              "Itens essenciais de conformidade e responsabilidade para adoção de IA.",
-            subtopics: [
-              {
-                title: "Faça",
-                content:
-                  "Avalie viés/equidade por grupo; publique model cards/data sheets; realize DPIA/relatórios de impacto; aplique minimização e políticas de retenção; mantenha trilhas de auditoria; ofereça recurso humano e programas de requalificação; pratique red‑teaming e tenha plano de incidentes.",
-                isPositive: true,
-              },
-              {
-                title: "Não faça",
-                content:
-                  "Treinar/usar dados sem base legal; coletar além do necessário; decisões automatizadas sem explicação ou direito de revisão; implantar sem monitoramento; ocultar limitações e riscos conhecidos.",
-                isPositive: false,
-              },
-            ],
-          },
-        ],
-        bullets: [
-          "Viés e transparência: monitore datasets, métricas de equidade e documente limitações.",
-          "Privacidade e segurança: anonimização, controles de acesso e conformidade regulatória.",
-          "Impacto socioeconômico: requalificação, aumento de produtividade e novos modelos de trabalho.",
-          "Governança: políticas de uso responsável, auditoria e monitoramento contínuo.",
         ],
       },
     ],

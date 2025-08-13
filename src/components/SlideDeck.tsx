@@ -11,6 +11,7 @@ interface SlideDeckProps {
 export const SlideDeck = ({ slides }: SlideDeckProps) => {
   const [index, setIndex] = useState(0);
   const [imageFailed, setImageFailed] = useState(false);
+  const [failedExtraImages, setFailedExtraImages] = useState<Record<number, boolean>>({});
   const total = slides.length;
   const progress = useMemo(() => ((index + 1) / total) * 100, [index, total]);
 
@@ -31,6 +32,7 @@ export const SlideDeck = ({ slides }: SlideDeckProps) => {
   useEffect(() => {
     // reset fallback state when slide changes
     setImageFailed(false);
+    setFailedExtraImages({});
   }, [slide?.image]);
 
   return (
@@ -86,12 +88,23 @@ export const SlideDeck = ({ slides }: SlideDeckProps) => {
           <div className="mt-4 space-y-4">
             {slide.extraImages.map((img, i) => (
               <figure key={i} className="">
-                <img
-                  src={img.src}
-                  alt={img.alt ?? "Imagem adicional do slide"}
-                  className="max-w-full rounded-md border border-border mx-auto"
-                  style={{ width: img.scale ? `${img.scale * 100}%` : undefined }}
-                />
+                {!failedExtraImages[i] ? (
+                  <img
+                    src={img.src}
+                    alt={img.alt ?? "Imagem adicional do slide"}
+                    className="max-w-full rounded-md border border-border mx-auto"
+                    style={{ width: img.scale ? `${img.scale * 100}%` : undefined }}
+                    loading="lazy"
+                    onError={() => setFailedExtraImages((m) => ({ ...m, [i]: true }))}
+                  />
+                ) : (
+                  <div className="w-full rounded-md border border-dashed border-border p-6 text-center text-sm text-muted-foreground">
+                    Não foi possível carregar a imagem.
+                    <div className="mt-2">
+                      Caminho: <code className="bg-muted px-1 py-0.5 rounded">{img.src}</code>
+                    </div>
+                  </div>
+                )}
                 {img.caption && (
                   <figcaption className="mt-2 text-xs text-muted-foreground text-center">
                     {img.caption}
@@ -161,12 +174,23 @@ export const SlideDeck = ({ slides }: SlideDeckProps) => {
           <div className="mt-4 space-y-4">
             {slide.extraImages.map((img, i) => (
               <figure key={i} className="">
-                <img
-                  src={img.src}
-                  alt={img.alt ?? "Imagem adicional do slide"}
-                  className="max-w-full rounded-md border border-border mx-auto"
-                  style={{ width: img.scale ? `${img.scale * 100}%` : undefined }}
-                />
+                {!failedExtraImages[i] ? (
+                  <img
+                    src={img.src}
+                    alt={img.alt ?? "Imagem adicional do slide"}
+                    className="max-w-full rounded-md border border-border mx-auto"
+                    style={{ width: img.scale ? `${img.scale * 100}%` : undefined }}
+                    loading="lazy"
+                    onError={() => setFailedExtraImages((m) => ({ ...m, [i]: true }))}
+                  />
+                ) : (
+                  <div className="w-full rounded-md border border-dashed border-border p-6 text-center text-sm text-muted-foreground">
+                    Não foi possível carregar a imagem.
+                    <div className="mt-2">
+                      Caminho: <code className="bg-muted px-1 py-0.5 rounded">{img.src}</code>
+                    </div>
+                  </div>
+                )}
                 {img.caption && (
                   <figcaption className="mt-2 text-xs text-muted-foreground text-center">
                     {img.caption}
