@@ -1,5 +1,4 @@
 import avancadoImg from "@/assets/course-avancado.jpg";
-import fundamentosImg from "@/assets/course-fundamentos.jpg";
 import introImg from "@/assets/course-intro.jpg";
 
 export type SlideTopic = {
@@ -33,7 +32,7 @@ export type Slide = {
 };
 
 export type Course = {
-  id: "introducao" | "fundamentos" | "avancado";
+  id: "introducao" | "avancado";
   title: string;
   description: string;
   image: string;
@@ -523,643 +522,245 @@ export const courses: Course[] = [
       },
     ],
   },
-  {
-    id: "fundamentos",
-    title: "Fundamentos e Técnicas da IA",
-    description:
-      "Aprenda as bases do aprendizado de máquina, redes neurais e técnicas usadas em IA generativa.",
-    image: fundamentosImg,
-    imageAlt: "Ilustração abstrata de rede neural e conexões em azul e roxo",
-    icon: "Brain",
-    slides: [
-      {
-        title: "Tipos de aprendizado",
-        description:
-          "Os três paradigmas principais e quando usar cada um: aprender com rótulos, descobrir padrões ocultos e otimizar decisões por interação.",
-        topics: [
-          {
-            title: "Supervisionado",
-            content:
-              "Modelo aprende a mapear entradas para saídas a partir de exemplos rotulados. Usado em classificação e regressão.",
-          },
-          {
-            title: "Não supervisionado",
-            content:
-              "Descobre estrutura nos dados sem rótulos, como agrupamentos e reduções de dimensionalidade.",
-          },
-          {
-            title: "Reforço",
-            content:
-              "Agente aprende por tentativa e erro, maximizando recompensa ao interagir com um ambiente.",
-          },
-        ],
-        bullets: [
-          "Supervisionado, não supervisionado e por reforço",
-          "Tarefas: classificação, regressão, clustering, controle",
-          "Métricas de avaliação e overfitting",
-        ],
-      },
-      {
-        title: "Redes neurais artificiais",
-        description:
-          "A estrutura básica que sustenta o deep learning: camadas, ativações e como o erro se propaga para ajustar os pesos.",
-        topics: [
-          {
-            title: "Perceptrons e camadas",
-            content:
-              "Unidades lineares empilhadas formam redes profundas capazes de aprender representações complexas.",
-          },
-          {
-            title: "Funções de ativação",
-            content:
-              "Não linearidades como ReLU, GELU e sigmoid permitem capturar relações não lineares.",
-          },
-          {
-            title: "Backpropagation e otimização",
-            content:
-              "O gradiente do erro é propagado para atualizar pesos com otimizadores como SGD, Adam e suas variantes.",
-          },
-          {
-            title: "Regularização",
-            content:
-              "Técnicas como dropout, weight decay e early stopping evitam overfitting e melhoram generalização.",
-          },
-        ],
-        bullets: [
-          "Perceptrons, camadas e funções de ativação",
-          "Backpropagation e otimização",
-          "Regularização e generalização",
-        ],
-      },
-      {
-        title: "Técnicas em IA generativa",
-        description:
-          "Os blocos modernos para gerar conteúdo de alta qualidade, com controle e condicionamento.",
-        topics: [
-          {
-            title: "Transformers e atenção",
-            content:
-              "Mecanismo de atenção capta relações de longo alcance, base de LLMs e difusão guiada por texto.",
-          },
-          {
-            title: "Modelos de difusão",
-            content:
-              "Processo de denoising progressivo que reconstrói dados de ruído, possibilitando geração de imagens e áudio.",
-          },
-          {
-            title: "Fine-tuning e instrução",
-            content:
-              "Ajuste do modelo para domínios específicos e alinhamento a instruções, melhorando utilidade prática.",
-          },
-        ],
-        bullets: [
-          "Transformers e atenção",
-          "Modelos de difusão",
-          "Fine-tuning e instrução",
-        ],
-      },
-      {
-        title: "Dados para modelos generativos",
-        description:
-          "Qualidade dos dados é central: estratégias para curar, balancear e avaliar riscos de viés.",
-        topics: [
-          {
-            title: "Coleta e limpeza",
-            content:
-              "Remoção de ruído, duplicatas e dados tóxicos; curadoria garante consistência e representatividade.",
-          },
-          {
-            title: "Tokenização e normalização",
-            content:
-              "Conversão de texto/imagem em unidades apropriadas (tokens) e padronização de formatos para treino estável.",
-          },
-          {
-            title: "Mitigação de viés",
-            content:
-              "Medições de equidade, reamostragem e filtros para reduzir vieses e impactos indesejados.",
-          },
-        ],
-        bullets: [
-          "Coleta, limpeza e balanceamento",
-          "Tokenização e normalização",
-          "Avaliação e mitigação de viés",
-        ],
-      },
-      {
-        title: "Ferramentas populares",
-        description:
-          "Principais frameworks e serviços do ecossistema para treinar, servir e integrar modelos.",
-        topics: [
-          {
-            title: "Frameworks",
-            content:
-              "TensorFlow e PyTorch para modelagem/treino; ecossistemas maduros e ampla comunidade.",
-          },
-          {
-            title: "Plataformas de modelos",
-            content:
-              "Hugging Face para repositórios, hubs e pipelines; acesso a modelos open-source e datasets.",
-          },
-          {
-            title: "APIs e serviços",
-            content:
-              "OpenAI, Stability AI e outros provedores para inferência gerenciada, escalável e com SLAs.",
-          },
-        ],
-        bullets: [
-          "TensorFlow e PyTorch",
-          "Hugging Face, OpenAI API",
-          "Stability AI e ecossistema open-source",
-        ],
-      },
-      {
-        title: "Modelos generativos",
-        description:
-          "Como modelos aprendem distribuições de dados para criar amostras novas e úteis para diversas tarefas.",
-        topics: [
-          {
-            title: "Objetivo",
-            content:
-              "Aproximar a distribuição dos dados de treino e amostrar novas instâncias coerentes com ela.",
-          },
-          {
-            title: "Condicionamento",
-            content:
-              "Guiar a geração com rótulos, texto ou imagens de referência para controlar conteúdo e estilo.",
-          },
-          {
-            title: "Avaliação",
-            content:
-              "Métricas quantitativas (p.ex., perplexidade, FID) e avaliação humana para qualidade e segurança.",
-          },
-        ],
-        bullets: [
-          "Aprendem a gerar dados similares ao treinamento",
-          "Geram texto, imagens, áudio e vídeo",
-          "Aplicações em criatividade, síntese e simulação",
-        ],
-      },
-      {
-        title: "Transformers (detalhes)",
-        description:
-          "Arquitetura baseada em atenção que permite paralelismo e captura de dependências de longo alcance.",
-        topics: [
-          {
-            title: "Atenção",
-            content:
-              "Mecanismo que pondera partes relevantes da entrada; multi-head attention captura relações diversas.",
-          },
-          {
-            title: "Positional encoding",
-            content:
-              "Codifica ordem/sequência para compensar a ausência de recorrência, essencial em texto e séries.",
-          },
-          {
-            title: "Arquiteturas",
-            content:
-              "Encoder, decoder e encoder-decoder; variações como LLaMA, T5 e arquiteturas eficientes.",
-          },
-          {
-            title: "Escalabilidade",
-            content:
-              "Leis de escala orientam ganhos com mais dados, parâmetros e compute, até limites práticos.",
-          },
-        ],
-        bullets: [
-          "Atenção permite modelar contexto em paralelo",
-          "Base de LLMs modernos (GPT, LLaMA, etc.)",
-          "Escalam bem em dados e parâmetros",
-        ],
-      },
-      {
-        title: "Large Language Models (LLMs)",
-        description:
-          "Modelos de linguagem de grande escala capazes de seguir instruções, raciocinar e escrever código, com limitações conhecidas.",
-        topics: [
-          {
-            title: "Pré-treinamento",
-            content:
-              "Treino auto-supervisionado em corpora massivos para prever o próximo token e aprender conhecimento geral.",
-          },
-          {
-            title: "Alinhamento por instrução",
-            content:
-              "Técnicas como SFT e RLHF afinam o comportamento para seguir instruções humanas com segurança.",
-          },
-          {
-            title: "Limitações",
-            content:
-              "Alucinação, contexto finito, sensibilidade a prompts e custos computacionais são desafios atuais.",
-          },
-        ],
-        bullets: [
-          "Treinados em grandes corpora de texto",
-          "Tarefas: QA, resumo, geração, código",
-          "Limitações: alucinação, contexto finito, custo",
-        ],
-      },
-      {
-        title: "Prompt engineering",
-        description:
-          "Estratégias para obter saídas confiáveis: estrutura de instruções, exemplos e restrições para guiar o modelo.",
-        topics: [
-          {
-            title: "Estrutura do prompt",
-            content:
-              "Defina papel, tarefa, contexto e formato de saída. Seja específico sobre restrições e critérios.",
-          },
-          {
-            title: "Exemplos (few-shot)",
-            content:
-              "Inclua demonstrações curtas e de alta qualidade para guiar o estilo e a forma da resposta.",
-          },
-          {
-            title: "Verificações",
-            content:
-              "Peça checagens internas, fontes, planos de ação e passos para aumentar confiabilidade.",
-          },
-        ],
-        bullets: [
-          "Especificar instruções, contexto e formato de saída",
-          "Padrões: papel/tarefa/contexto/exemplos",
-          "Use restrições, verificações e auto-reflexão",
-        ],
-      },
-      {
-        title: "Zero-shot e few-shot",
-        description:
-          "Capacidades emergentes de generalização: como exemplos de qualidade no prompt melhoram resultados.",
-        topics: [
-          {
-            title: "Zero-shot",
-            content:
-              "Resolver tarefas sem exemplos explícitos, contando com o conhecimento internalizado no pré-treinamento.",
-          },
-          {
-            title: "Few-shot",
-            content:
-              "Fornecer poucos exemplos guia o modelo sobre o formato e os padrões esperados, elevando a precisão.",
-          },
-          {
-            title: "Avaliação",
-            content:
-              "Compare resultados com e sem exemplos; use conjuntos de teste representativos e métricas claras.",
-          },
-        ],
-        bullets: [
-          "Resolver tarefas sem (ou com poucos) exemplos",
-          "Melhora com exemplos de qualidade no prompt",
-          "Avaliar generalização e confiabilidade",
-        ],
-      },
-      {
-        title: "Embeddings",
-        description:
-          "Representações numéricas que capturam significado e permitem medir similaridade semântica.",
-        topics: [
-          {
-            title: "Definição",
-            content:
-              "Vetores densos que mapeiam itens semanticamente similares próximos no espaço vetorial.",
-          },
-          {
-            title: "Similaridade",
-            content:
-              "Cálculos de distância/cosseno permitem buscar itens relacionados e agrupar por temas.",
-          },
-          {
-            title: "Aplicações",
-            content:
-              "Busca semântica, deduplicação, recomendação, clusterização e base para RAG.",
-          },
-        ],
-        bullets: [
-          "Representações vetoriais para medir similaridade",
-          "Texto, imagens ou áudio no mesmo espaço",
-          "Base para busca semântica e clustering",
-        ],
-      },
-      {
-        title: "Vector stores / vector databases",
-        description:
-          "Bancos otimizados para indexar e recuperar embeddings com eficiência e filtros.",
-        topics: [
-          {
-            title: "Indexação",
-            content:
-              "Estruturas como HNSW e IVF garantem busca aproximada rápida em grandes coleções.",
-          },
-          {
-            title: "Filtros e metadata",
-            content:
-              "Aplique filtros por atributos, controle versões e enriqueça documentos com metadados.",
-          },
-          {
-            title: "Integração",
-            content:
-              "Conecte ao pipeline de RAG e sistemas transacionais para respostas atualizadas e auditáveis.",
-          },
-        ],
-        bullets: [
-          "Armazenam embeddings e suportam busca por similaridade",
-          "Exemplos: Pinecone, FAISS, Astra DB",
-          "Integração com pipelines de IA generativa",
-        ],
-      },
-      {
-        title: "Retrieval-Augmented Generation (RAG)",
-        description:
-          "Combina busca em conhecimento atualizado com geração, reduzindo alucinações e melhorando precisão.",
-        topics: [
-          {
-            title: "Pipeline",
-            content:
-              "Consulta recupera contextos relevantes por embeddings/keywords; o modelo gera respostas com base nesses trechos.",
-          },
-          {
-            title: "Benefícios",
-            content:
-              "Atualização fácil do conhecimento, maior precisão factual e rastreabilidade por citações.",
-          },
-          {
-            title: "Armadilhas",
-            content:
-              "Contextos irrelevantes, janelas curtas e chunking ruim prejudicam a qualidade; avalie e ajuste.",
-          },
-        ],
-        bullets: [
-          "Combina busca (retrieval) com geração",
-          "Respostas mais precisas e atualizadas",
-          "Requer embeddings e base vetorial",
-        ],
-      },
-      {
-        title: "Prompt chaining",
-        description:
-          "Encadeamento de prompts para decompor problemas complexos em etapas verificáveis.",
-        topics: [
-          {
-            title: "Decomposição",
-            content:
-              "Dividir tarefas em subproblemas facilita controle, verificação e paralelização de partes.",
-          },
-          {
-            title: "Agentes e ferramentas",
-            content:
-              "Cada etapa pode consultar APIs, bases e validadores, com transições condicionais por regras.",
-          },
-          {
-            title: "Observabilidade",
-            content:
-              "Registre prompts, contextos e saídas para auditoria, debugging e melhoria contínua.",
-          },
-        ],
-        bullets: [
-          "Dividir tarefas em etapas com prompts encadeados",
-          "Melhora controle, rastreabilidade e qualidade",
-          "Ferramentas: LangChain, LangFlow",
-        ],
-      },
-    ],
-  },
+
   {
     id: "avancado",
-    title: "IA Generativa Avançada e Aplicações Reais",
+    title: "Aplicações Reais",
     description:
-      "Aprofunde-se em arquiteturas de ponta e descubra aplicações práticas em diversos setores.",
+      "Descubra aplicações práticas de IA generativa em diversos setores e aprenda a implementar soluções reais.",
     image: avancadoImg,
     imageAlt: "Ilustração de blocos transformer e fluxos generativos em azul e roxo",
     icon: "Cpu",
     slides: [
       {
-        title: "Arquiteturas avançadas",
+        title: "Aplicações em Negócios e Produtividade",
         description:
-          "Comparação prática entre GANs, VAEs, Transformers e técnicas de eficiência/controle em geração.",
+          "Como empresas estão usando IA generativa para aumentar eficiência, reduzir custos e melhorar a experiência do cliente.",
         topics: [
           {
-            title: "GANs",
+            title: "Assistentes Internos",
             content:
-              "Gerador e discriminador em competição produzem amostras realistas; sensíveis a instabilidade de treino.",
+              "Copilotos corporativos que ajudam funcionários a redigir e-mails, criar relatórios, analisar dados e preparar apresentações. Exemplos: Microsoft Copilot, Google Workspace AI, Notion AI.",
           },
           {
-            title: "VAEs",
+            title: "Atendimento ao Cliente",
             content:
-              "Modelos probabilísticos que aprendem espaços latentes contínuos, úteis para interpolação e edição.",
+              "Chatbots inteligentes que resolvem consultas comuns, escalam casos complexos e fornecem suporte 24/7. Integração com CRMs para personalização e histórico completo.",
           },
           {
-            title: "Transformers",
+            title: "Análise de Documentos",
             content:
-              "Sequenciais baseados em atenção, versáteis em texto e multimodalidade; padrão dominante atual.",
+              "Extração automática de informações de contratos, relatórios e formulários. Sumarização de documentos longos e identificação de insights relevantes.",
           },
           {
-            title: "Eficiência e controle",
+            title: "Automação de Processos",
             content:
-              "Técnicas como quantização, LoRA e guidance ajustam custo e aderência ao prompt/condições.",
+              "Automação de tarefas repetitivas como preenchimento de formulários, classificação de documentos e geração de relatórios padronizados.",
           },
         ],
         bullets: [
-          "GANs, VAEs e Transformers",
-          "Escalonamento de modelos e eficiência",
-          "Técnicas de controle e condicionamento",
+          "Copilotos corporativos para produtividade",
+          "Chatbots inteligentes para atendimento",
+          "Análise e extração de documentos",
+          "Automação de processos repetitivos",
         ],
       },
       {
-        title: "Modelos de texto",
+        title: "Aplicações em Marketing e Conteúdo",
         description:
-          "Panorama de LLMs, suas capacidades, limitações e integrações com ferramentas de busca (RAG).",
+          "Como a IA generativa está revolucionando a criação de conteúdo, marketing digital e comunicação.",
         topics: [
           {
-            title: "Capacidades",
+            title: "Geração de Conteúdo",
             content:
-              "Resumo, QA, extração, geração criativa e código. Integrações com ferramentas ampliam o alcance.",
+              "Criação de posts para redes sociais, artigos de blog, newsletters e materiais promocionais. Personalização de conteúdo baseada no público-alvo e contexto.",
           },
           {
-            title: "Limitações",
+            title: "Design e Criativos",
             content:
-              "Alucinações, vieses, custos e latência; mitigação por RAG, verificação e engenharia de prompts.",
+              "Geração de imagens para campanhas publicitárias, mockups de produtos e materiais visuais. Ferramentas: Midjourney, DALL-E, Canva AI.",
           },
           {
-            title: "RAG",
+            title: "Copywriting e SEO",
             content:
-              "Combinação de recuperação e geração para respostas atuais e citáveis, reduzindo erros factuais.",
+              "Otimização de textos para mecanismos de busca, criação de meta-descrições e títulos atrativos. Geração de variações de copy para testes A/B.",
+          },
+          {
+            title: "Vídeo e Áudio",
+            content:
+              "Criação de vídeos promocionais, podcasts e conteúdo audiovisual. Dublagem e tradução automática de conteúdo.",
           },
         ],
         bullets: [
-          "LLMs como GPT, Claude, LLaMA",
-          "Capacidades e limitações",
-          "RAG (busca + geração)",
+          "Geração automática de conteúdo",
+          "Design e criativos com IA",
+          "Copywriting otimizado para SEO",
+          "Produção de vídeo e áudio",
         ],
       },
       {
-        title: "Imagem, áudio e vídeo",
+        title: "Aplicações em Educação e Treinamento",
         description:
-          "Como funcionam pipelines de geração e edição multimídia e como avaliar a qualidade das saídas.",
+          "Como a IA generativa está transformando a educação, criando experiências de aprendizado personalizadas e interativas.",
         topics: [
           {
-            title: "Imagem",
+            title: "Tutoria Personalizada",
             content:
-              "Difusão guiada por texto e controlnets permitem controle de composição, estilo e consistência.",
+              "Assistentes de IA que adaptam o conteúdo ao nível do aluno, explicam conceitos de diferentes formas e fornecem feedback personalizado.",
           },
           {
-            title: "Áudio",
+            title: "Geração de Conteúdo Educacional",
             content:
-              "Modelos TTS e música geram fala e trilhas com timbre e prosódia controlados por prompt.",
+              "Criação de exercícios, quizzes, estudos de caso e materiais didáticos. Adaptação de conteúdo para diferentes estilos de aprendizado.",
           },
           {
-            title: "Vídeo",
+            title: "Simulações e Ambientes Virtuais",
             content:
-              "Geração e edição temporal coerente ainda são desafiadoras, mas evoluem rapidamente (ex.: Sora).",
+              "Criação de cenários de treinamento realistas para medicina, aviação, engenharia e outras áreas que requerem prática segura.",
           },
           {
-            title: "Avaliação",
+            title: "Avaliação e Feedback",
             content:
-              "Combine métricas (FID, MOS) e revisão humana para assegurar fidelidade e segurança de conteúdo.",
+              "Análise automática de redações, códigos e projetos. Fornecimento de feedback construtivo e sugestões de melhoria.",
           },
         ],
         bullets: [
-          "Stable Diffusion, MidJourney, Sora",
-          "Synthesis e edição generativa",
-          "Avaliação de qualidade",
+          "Tutoria adaptativa personalizada",
+          "Conteúdo educacional gerado por IA",
+          "Simulações e ambientes virtuais",
+          "Avaliação automática e feedback",
         ],
       },
       {
-        title: "Aplicações práticas",
+        title: "Aplicações em Saúde e Medicina",
         description:
-          "Casos reais em diferentes setores, com foco em ROI, riscos e desenho de produto/fluxos.",
+          "Como a IA generativa está sendo aplicada na área da saúde para diagnóstico, pesquisa e atendimento ao paciente.",
         topics: [
           {
-            title: "Negócios",
+            title: "Diagnóstico por Imagem",
             content:
-              "Assistentes internos, análise de documentos, automação de processos e suporte com redução de custos.",
+              "Análise de radiografias, ressonâncias e tomografias para detectar anomalias e auxiliar no diagnóstico médico.",
           },
           {
-            title: "Conteúdo",
+            title: "Descoberta de Medicamentos",
             content:
-              "Geração de texto e mídia para marketing, educação, jogos e entretenimento com personalização.",
+              "Geração de moléculas candidatas para novos medicamentos, otimização de compostos existentes e predição de propriedades farmacológicas.",
           },
           {
-            title: "Automação",
+            title: "Documentação Médica",
             content:
-              "Orquestração de tarefas complexas com agentes, integrando sistemas legados e APIs modernas.",
+              "Geração automática de prontuários, relatórios de exames e documentação clínica a partir de consultas e procedimentos.",
           },
           {
-            title: "Governança",
+            title: "Educação Médica",
             content:
-              "Políticas de uso, auditoria de prompts e controles de segurança para adoção corporativa.",
+              "Criação de casos clínicos para treinamento, simulações de procedimentos e materiais educacionais para profissionais da saúde.",
           },
         ],
         bullets: [
-          "Negócios, arte e jogos",
-          "Geração de conteúdo e produtividade",
-          "Automação e prototipagem",
+          "Diagnóstico assistido por IA",
+          "Descoberta e otimização de medicamentos",
+          "Documentação médica automatizada",
+          "Educação e treinamento médico",
         ],
       },
       {
-        title: "Tendências e AGI",
+        title: "Aplicações em Desenvolvimento de Software",
         description:
-          "O que vem a seguir: modelos multimodais, alinhamento, segurança e especulações sobre AGI.",
+          "Como desenvolvedores estão usando IA generativa para acelerar o desenvolvimento, melhorar a qualidade do código e automatizar tarefas.",
         topics: [
           {
-            title: "Multimodalidade",
+            title: "Copilotos de Código",
             content:
-              "Modelos que entendem e geram múltiplas modalidades (texto, imagem, áudio, vídeo) de forma integrada.",
+              "Assistentes que sugerem código, completam funções e ajudam na depuração. Exemplos: GitHub Copilot, Cursor, Amazon CodeWhisperer.",
           },
           {
-            title: "Segurança e alinhamento",
+            title: "Geração de Testes",
             content:
-              "Técnicas para reduzir abuso, vieses e comportamentos indesejados mantendo utilidade e liberdade criativa.",
+              "Criação automática de testes unitários, de integração e end-to-end. Geração de dados de teste e cenários de teste.",
           },
           {
-            title: "Rumo à AGI",
+            title: "Documentação e Comentários",
             content:
-              "Pesquisa em capacidades gerais, raciocínio, memória de longo prazo e auto-melhoria com segurança.",
+              "Geração automática de documentação técnica, comentários no código e READMEs baseados no código fonte.",
+          },
+          {
+            title: "Refatoração e Otimização",
+            content:
+              "Sugestões de melhorias no código, identificação de problemas de performance e refatoração automática.",
           },
         ],
         bullets: [
-          "Modelos multimodais",
-          "Segurança e alinhamento",
-          "Caminhos para AGI",
+          "Copilotos para desenvolvimento",
+          "Geração automática de testes",
+          "Documentação técnica automatizada",
+          "Refatoração e otimização de código",
         ],
       },
       {
-        title: "Fine-tuning (em profundidade)",
+        title: "Aplicações em Pesquisa e Ciência",
         description:
-          "Estratégias de adaptação de modelos: dados do domínio, instruções, riscos e governança.",
+          "Como pesquisadores estão usando IA generativa para acelerar descobertas científicas e análise de dados.",
         topics: [
           {
-            title: "Abordagens",
+            title: "Análise de Dados Científicos",
             content:
-              "Fine-tuning completo vs. adaptadores (LoRA/QLoRA) equilibram custo, desempenho e requisitos de hardware.",
+              "Processamento e análise de grandes volumes de dados experimentais, identificação de padrões e geração de hipóteses.",
           },
           {
-            title: "Dados",
+            title: "Simulações e Modelagem",
             content:
-              "Conjuntos curados com instruções do domínio e exemplos edge-case; atenção a licenças e privacidade.",
+              "Criação de modelos computacionais complexos, simulações de fenômenos físicos e predições baseadas em dados históricos.",
           },
           {
-            title: "Avaliação e riscos",
+            title: "Revisão de Literatura",
             content:
-              "Métricas de tarefa, red-teaming e testes de segurança; mitigue overfitting e vazamento de dados.",
+              "Análise automática de artigos científicos, sumarização de pesquisas e identificação de lacunas no conhecimento.",
+          },
+          {
+            title: "Colaboração Científica",
+            content:
+              "Ferramentas que facilitam a colaboração entre pesquisadores, compartilhamento de dados e comunicação científica.",
           },
         ],
         bullets: [
-          "Ajuste fino de modelos pré-treinados",
-          "Dados específicos do domínio e instruções",
-          "Cuidados: overfitting, segurança, licenças",
+          "Análise de dados científicos",
+          "Simulações e modelagem computacional",
+          "Revisão automática de literatura",
+          "Colaboração e comunicação científica",
         ],
       },
       {
-        title: "MCP / A2A",
+        title: "Implementação e Governança",
         description:
-          "Padrões para conectar agentes a ferramentas e a outros agentes com interoperabilidade e controle.",
+          "Considerações práticas para implementar IA generativa em organizações, incluindo governança, ética e ROI.",
         topics: [
           {
-            title: "MCP (Model Context Protocol)",
+            title: "Estratégia de Implementação",
             content:
-              "Define como agentes descobrem e consomem ferramentas com contratos claros e segurança no contexto.",
+              "Identificação de casos de uso prioritários, definição de métricas de sucesso e criação de roadmap de implementação.",
           },
           {
-            title: "A2A (Agent-to-Agent)",
+            title: "Governança e Ética",
             content:
-              "Permite colaboração/orquestração entre agentes especializados, cada um com competências e SLAs.",
+              "Políticas de uso responsável, comitês de ética, auditoria de modelos e conformidade regulatória (LGPD, GDPR).",
           },
           {
-            title: "Segurança",
+            title: "ROI e Métricas",
             content:
-              "Autorização granular, isolamento de capacidades e auditoria para rastrear ações executadas.",
+              "Medição de retorno sobre investimento, métricas de produtividade, satisfação do usuário e impacto nos negócios.",
+          },
+          {
+            title: "Capacitação e Mudança Cultural",
+            content:
+              "Treinamento de equipes, gestão da mudança e criação de cultura de inovação responsável com IA.",
           },
         ],
         bullets: [
-          "Padrões para conectar agentes e ferramentas (Model Context Protocol)",
-          "Agent-to-Agent: colaboração/orquestração entre agentes",
-          "Foco em interoperabilidade e segurança",
-        ],
-      },
-      {
-        title: "APA",
-        description:
-          "Automação de processos impulsionada por agentes, com guardrails, auditoria e integração corporativa.",
-        topics: [
-          {
-            title: "Modelagem de processos",
-            content:
-              "Defina etapas, regras de transição e pontos de verificação; trate exceções e reprocessamentos.",
-          },
-          {
-            title: "Guardrails e auditoria",
-            content:
-              "Limites de ação, revisão humana obrigatória e trilhas de auditoria para rastrear decisões.",
-          },
-          {
-            title: "Integração",
-            content:
-              "Conecte sistemas ERP/CRM, bases e APIs; monitore métricas de desempenho e custo (ROI).",
-          },
-        ],
-        bullets: [
-          "Automação de processos orientada a agentes",
-          "Definição de fluxos, guardrails e auditoria",
-          "Integração com sistemas corporativos",
+          "Estratégia e roadmap de implementação",
+          "Governança ética e conformidade",
+          "Medição de ROI e impacto",
+          "Capacitação e mudança cultural",
         ],
       },
     ],

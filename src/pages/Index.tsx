@@ -43,19 +43,19 @@ const Index = () => {
       <main className="container py-12 md:py-16 flex-1">
         <section aria-labelledby="cursos" className="animate-fade-in">
           <h2 id="cursos" className="sr-only">Cursos em destaque</h2>
-          <div className="grid gap-6 md:grid-cols-3">
-            {courses.map((c) => (
-              <CourseCard
-                key={c.id}
-                to={`/curso/${c.id}`}
-                title={c.title}
-                description={c.description}
-                image={c.image}
-                imageAlt={c.imageAlt}
-                disabled={c.id !== 'introducao'}
-                badgeText={c.id !== 'introducao' ? 'Em breve' : undefined}
-              />
-            ))}
+          <div className="flex justify-center">
+            <div className="grid gap-6 md:grid-cols-2 max-w-4xl">
+              {courses.map((c) => (
+                <CourseCard
+                  key={c.id}
+                  to={`/curso/${c.id}`}
+                  title={c.title}
+                  description={c.description}
+                  image={c.image}
+                  imageAlt={c.imageAlt}
+                />
+              ))}
+            </div>
           </div>
         </section>
       </main>
