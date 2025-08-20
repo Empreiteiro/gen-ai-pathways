@@ -1,6 +1,7 @@
 import { CourseCard } from "@/components/CourseCard";
 import Footer from "@/components/Footer";
 import { SEO } from "@/components/SEO";
+import { ThemeToggle } from "@/components/ThemeToggle";
 import { courses } from "@/data/courses";
 
 const Index = () => {
@@ -27,6 +28,9 @@ const Index = () => {
       />
       <header className="border-b border-border">
         <div className="container py-16 md:py-24">
+          <div className="flex justify-end mb-8">
+            <ThemeToggle />
+          </div>
           <h1 className="text-4xl md:text-6xl font-bold tracking-tight font-display text-center">
             Aprenda Inteligência Artificial do Básico ao Avançado
           </h1>
