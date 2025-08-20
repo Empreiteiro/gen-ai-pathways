@@ -44,7 +44,7 @@ const Index = () => {
         <section aria-labelledby="cursos" className="animate-fade-in">
           <h2 id="cursos" className="sr-only">Cursos em destaque</h2>
           <div className="flex justify-center">
-            <div className="grid gap-6 md:grid-cols-2 max-w-4xl">
+            <div className="grid gap-6 md:grid-cols-3 max-w-6xl">
               {courses.map((c) => (
                 <CourseCard
                   key={c.id}

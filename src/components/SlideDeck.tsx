@@ -84,6 +84,25 @@ export const SlideDeck = ({ slides }: SlideDeckProps) => {
             )}
           </figure>
         )}
+        {slide.video && (
+          <figure className="mb-4">
+            <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
+              <iframe
+                src={slide.video}
+                title={slide.videoTitle ?? "Vídeo do slide"}
+                className="absolute top-0 left-0 w-full h-full rounded-md border border-border"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              />
+            </div>
+            {slide.videoTitle && (
+              <figcaption className="mt-2 text-xs text-muted-foreground text-center">
+                {slide.videoTitle}
+              </figcaption>
+            )}
+          </figure>
+        )}
         {slide.extraImages && slide.extraImages.length > 0 && slide.extraImagesPosition !== 'after' && (
           <div className="mt-4 space-y-4">
             {slide.extraImages.map((img, i) => (

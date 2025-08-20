@@ -1,5 +1,4 @@
 import avancadoImg from "@/assets/course-avancado.jpg";
-import introImg from "@/assets/course-intro.jpg";
 
 export type SlideTopic = {
   title?: string;
@@ -29,10 +28,12 @@ export type Slide = {
   imageAlt?: string;
   extraImages?: SlideImage[];
   extraImagesPosition?: 'before' | 'after';
+  video?: string; // YouTube embed URL
+  videoTitle?: string; // Title for the video
 };
 
 export type Course = {
-  id: "introducao" | "avancado";
+  id: "introducao" | "avancado" | "ferramentas";
   title: string;
   description: string;
   image: string;
@@ -47,7 +48,7 @@ export const courses: Course[] = [
     title: "Introdução à Inteligência Artificial e IA Generativa",
     description:
       "Entenda os conceitos fundamentais de IA e descubra como a IA generativa está transformando o mundo.",
-    image: introImg,
+         image: avancadoImg,
     imageAlt: "Ilustração minimalista de robô e padrões generativos em azul e roxo",
     icon: "Bot",
     slides: [
@@ -533,236 +534,1653 @@ export const courses: Course[] = [
     icon: "Cpu",
     slides: [
       {
-        title: "Aplicações em Negócios e Produtividade",
+        title: "Casos de Uso de IA Generativa",
         description:
-          "Como empresas estão usando IA generativa para aumentar eficiência, reduzir custos e melhorar a experiência do cliente.",
+          "Neste curso, exploraremos 8 casos de uso práticos e específicos de IA generativa que estão gerando valor real em diferentes setores. Cada caso será apresentado com sua definição, aplicações, arquitetura técnica, métricas de sucesso e estratégias de implementação rápida. O foco é em soluções que você pode implementar hoje, com exemplos concretos e dicas para começar rapidamente.",
         topics: [
           {
-            title: "Assistentes Internos",
+            title: "Por que casos de uso específicos",
             content:
-              "Copilotos corporativos que ajudam funcionários a redigir e-mails, criar relatórios, analisar dados e preparar apresentações. Exemplos: Microsoft Copilot, Google Workspace AI, Notion AI.",
+              "Cada setor e processo tem necessidades únicas que demandam soluções customizadas. Entender os casos de uso específicos ajuda a identificar oportunidades reais de valor e implementar soluções que geram ROI mensurável.",
           },
           {
-            title: "Atendimento ao Cliente",
+            title: "Padrão de implementação",
             content:
-              "Chatbots inteligentes que resolvem consultas comuns, escalam casos complexos e fornecem suporte 24/7. Integração com CRMs para personalização e histórico completo.",
+              "Todos os casos seguem um padrão: definição clara do problema, identificação de métricas de sucesso, implementação incremental com validações e monitoramento contínuo de performance e impacto.",
           },
           {
-            title: "Análise de Documentos",
+            title: "Considerações comuns",
             content:
-              "Extração automática de informações de contratos, relatórios e formulários. Sumarização de documentos longos e identificação de insights relevantes.",
+              "Governança de dados, compliance regulatório, segurança, escalabilidade e integração com sistemas existentes são pontos críticos em qualquer implementação de IA generativa.",
           },
           {
-            title: "Automação de Processos",
+            title: "Estratégia de adoção",
             content:
-              "Automação de tarefas repetitivas como preenchimento de formulários, classificação de documentos e geração de relatórios padronizados.",
+              "Comece com casos de uso de alto valor e baixa complexidade, valide resultados rapidamente e expanda gradualmente para casos mais complexos conforme ganha experiência e confiança.",
           },
         ],
         bullets: [
-          "Copilotos corporativos para produtividade",
-          "Chatbots inteligentes para atendimento",
-          "Análise e extração de documentos",
-          "Automação de processos repetitivos",
+          "Foco em valor de negócio específico",
+          "Implementação incremental e validada",
+          "Governança e compliance integrados",
+          "Estratégia de adoção gradual",
         ],
       },
       {
-        title: "Aplicações em Marketing e Conteúdo",
+        title: "Document Intelligence",
         description:
-          "Como a IA generativa está revolucionando a criação de conteúdo, marketing digital e comunicação.",
+          "Extração, classificação e entendimento de documentos com OCR + NLP/LLMs para automatizar processos de negócio.",
+        video: "https://www.youtube.com/embed/5DuS6uRI5OM",
+        videoTitle: "Document Intelligence com IA Generativa",
         topics: [
           {
-            title: "Geração de Conteúdo",
+            title: "O que é Document Intelligence",
             content:
-              "Criação de posts para redes sociais, artigos de blog, newsletters e materiais promocionais. Personalização de conteúdo baseada no público-alvo e contexto.",
+              "Sistema inteligente que combina OCR (Reconhecimento Óptico de Caracteres), NLP (Processamento de Linguagem Natural) e LLMs para extrair, classificar e compreender informações de documentos não estruturados. Vai além da simples digitalização, entendendo o contexto, significado e relacionamentos entre dados em contratos, notas fiscais, relatórios, formulários e outros documentos de negócio.",
+            subtopics: [
+              {
+                title: "Componentes principais",
+                content:
+                  "OCR para digitalização, modelos de layout para detectar estruturas (tabelas, campos, seções), extração de entidades nomeadas (CNPJ, valores, datas, endereços), classificação automática de tipos de documento, e RAG para responder perguntas sobre o conteúdo.",
+              },
+              {
+                title: "Diferença da abordagem tradicional",
+                content:
+                  "Enquanto sistemas tradicionais dependem de templates rígidos, Document Intelligence usa IA para adaptar-se a variações de layout, entender contexto e extrair informações mesmo de documentos não padronizados.",
+              },
+            ],
           },
           {
-            title: "Design e Criativos",
+            title: "Casos de uso e aplicações",
             content:
-              "Geração de imagens para campanhas publicitárias, mockups de produtos e materiais visuais. Ferramentas: Midjourney, DALL-E, Canva AI.",
+              "Aplicações práticas em diversos setores que geram valor imediato e ROI mensurável através da automação de processos manuais e redução de erros.",
+            subtopics: [
+              {
+                title: "Financeiro e bancário",
+                content:
+                  "KYC/Onboarding (análise de documentos de identidade), processamento de contas a pagar/receber, análise de extratos bancários, validação de comprovantes, detecção de fraudes em documentos.",
+              },
+              {
+                title: "Fiscal e contábil",
+                content:
+                  "Processamento de notas fiscais eletrônicas (NFe), boletos, recibos, declarações fiscais, reconciliação automática de documentos, extração de dados para relatórios.",
+              },
+              {
+                title: "Jurídico e compliance",
+                content:
+                  "Análise de contratos, comparação de versões, detecção de cláusulas críticas, sumarização de documentos legais, extração de obrigações e prazos, análise de riscos contratuais.",
+              },
+              {
+                title: "Saúde e seguros",
+                content:
+                  "Processamento de laudos médicos, análise de apólices de seguro, validação de sinistros, extração de informações de prontuários, classificação de documentos médicos.",
+              },
+            ],
           },
           {
-            title: "Copywriting e SEO",
+            title: "Arquitetura técnica e funcionamento",
             content:
-              "Otimização de textos para mecanismos de busca, criação de meta-descrições e títulos atrativos. Geração de variações de copy para testes A/B.",
+              "Fluxo completo desde a ingestão do documento até a entrega de insights estruturados, com validações e auditoria em cada etapa.",
+            subtopics: [
+              {
+                title: "Pipeline de processamento",
+                content:
+                  "1) Ingestão e pré-processamento (normalização, limpeza); 2) OCR com pós-processamento (correção de erros); 3) Detecção de layout e estruturação; 4) Extração de entidades e campos; 5) Validação e enriquecimento; 6) Classificação e roteamento; 7) RAG para consultas complexas.",
+              },
+              {
+                title: "Tecnologias e modelos",
+                content:
+                  "OCR: Tesseract, Azure Computer Vision, Google Vision API; Layout: LayoutLM, PaddleOCR; Extração: NER customizado, regex inteligente, LLMs para campos complexos; Classificação: modelos de transformer fine-tuned para tipos de documento.",
+              },
+              {
+                title: "Validações e qualidade",
+                content:
+                  "Regras de negócio (faixas de valores, formatos), validação cruzada entre campos, checagem de consistência lógica, validação contra bases de dados externas (CNPJ, CEP), score de confiança por extração.",
+              },
+            ],
           },
           {
-            title: "Vídeo e Áudio",
+            title: "Métricas e KPIs de sucesso",
             content:
-              "Criação de vídeos promocionais, podcasts e conteúdo audiovisual. Dublagem e tradução automática de conteúdo.",
+              "Indicadores quantitativos e qualitativos para medir o desempenho do sistema e seu impacto no negócio.",
+            subtopics: [
+              {
+                title: "Métricas de precisão",
+                content:
+                  "Precisão de extração por campo (ex: 95% para valores, 98% para CNPJ), taxa de falsos positivos/negativos, acurácia de classificação de documentos, score de confiança médio.",
+              },
+              {
+                title: "Métricas de eficiência",
+                content:
+                  "Taxa de automação (STP - Straight Through Processing), tempo médio de processamento por documento, throughput (documentos/hora), redução de tempo manual vs. automático.",
+              },
+              {
+                title: "Métricas de negócio",
+                content:
+                  "Custo por documento processado, ROI da implementação, redução de erros manuais, satisfação dos usuários, tempo de resposta para consultas complexas.",
+              },
+            ],
+          },
+          {
+            title: "Considerações críticas e cuidados",
+            content:
+              "Aspectos essenciais para implementação segura, escalável e em conformidade com regulamentações.",
+            subtopics: [
+              {
+                title: "Privacidade e compliance",
+                content:
+                  "LGPD/GDPR para dados pessoais, criptografia em repouso e trânsito, controle de acesso baseado em roles, retenção e expurgo de dados, auditoria de acesso e processamento.",
+              },
+              {
+                title: "Segurança e antifraude",
+                content:
+                  "Detecção de documentos falsificados, validação de assinaturas digitais, análise de metadados para detectar manipulação, verificação de consistência entre dados extraídos e visuais.",
+              },
+              {
+                title: "Qualidade e validação",
+                content:
+                  "Human-in-the-loop (HITL) para campos críticos, versionamento de templates e regras, monitoramento contínuo de performance, feedback loop para melhoria dos modelos.",
+              },
+            ],
+          },
+          {
+            title: "Estratégia de implementação",
+            content:
+              "Abordagem incremental para maximizar valor e minimizar riscos, começando com casos de uso de alto impacto.",
+            subtopics: [
+              {
+                title: "Quick win inicial",
+                content:
+                  "Comece com 10-20 campos de alto valor (valor, impostos, vencimento, CNPJ) em documentos padronizados, com validações de negócio simples e HITL para exceções.",
+                isPositive: true,
+              },
+              {
+                title: "Expansão gradual",
+                content:
+                  "Adicione novos tipos de documento, campos complexos, e funcionalidades avançadas (RAG, análise semântica) conforme valida os resultados e ganha confiança.",
+              },
+              {
+                title: "Integração e automação",
+                content:
+                  "Conecte com sistemas existentes (ERP, CRM), implemente workflows automatizados, e adicione alertas e notificações para exceções e anomalias.",
+              },
+            ],
           },
         ],
         bullets: [
-          "Geração automática de conteúdo",
-          "Design e criativos com IA",
-          "Copywriting otimizado para SEO",
-          "Produção de vídeo e áudio",
+          "OCR + NLP + LLMs para extração inteligente de dados",
+          "Validações robustas e trilha completa de auditoria",
+          "HITL para campos críticos e exceções",
+          "Antifraude, compliance e segurança integrados",
+          "ROI mensurável através de automação e redução de erros",
         ],
       },
       {
-        title: "Aplicações em Educação e Treinamento",
+        title: "Sales & Marketing Automation",
         description:
-          "Como a IA generativa está transformando a educação, criando experiências de aprendizado personalizadas e interativas.",
+          "Automação de prospecção, nutrição e conversão com personalização em escala usando IA generativa.",
         topics: [
           {
-            title: "Tutoria Personalizada",
+            title: "O que é Sales & Marketing Automation",
             content:
-              "Assistentes de IA que adaptam o conteúdo ao nível do aluno, explicam conceitos de diferentes formas e fornecem feedback personalizado.",
+              "Sistema inteligente que combina dados, IA generativa e automação para personalizar e otimizar todo o funil de vendas e marketing. Vai além da automação básica, criando experiências únicas e relevantes para cada prospecto, baseadas em comportamento, contexto e dados firmográficos, resultando em maior engajamento e conversão.",
+            subtopics: [
+              {
+                title: "Componentes principais",
+                content:
+                  "Enriquecimento de dados, segmentação inteligente, geração de conteúdo personalizado, orquestração multi-canal, scoring preditivo, e otimização contínua baseada em performance e feedback.",
+              },
+              {
+                title: "Diferença da automação tradicional",
+                content:
+                  "Enquanto automações tradicionais usam templates e regras simples, a IA generativa cria conteúdo único e contextual, adaptando-se dinamicamente ao comportamento e necessidades de cada prospecto.",
+              },
+            ],
           },
           {
-            title: "Geração de Conteúdo Educacional",
+            title: "Casos de uso e aplicações práticas",
             content:
-              "Criação de exercícios, quizzes, estudos de caso e materiais didáticos. Adaptação de conteúdo para diferentes estilos de aprendizado.",
+              "Aplicações específicas que geram valor imediato através da automação inteligente de processos de vendas e marketing.",
+            subtopics: [
+              {
+                title: "Prospecção e enriquecimento",
+                content:
+                  "Identificação de leads qualificados, enriquecimento de dados firmográficos, descoberta de decisores, análise de fit de produto, e scoring de propensão de compra baseado em sinais comportamentais e dados externos.",
+              },
+              {
+                title: "Nutrição e engajamento",
+                content:
+                  "Sequências de e-mail personalizadas, conteúdo adaptativo baseado em interações, recomendações de produtos/serviços, e jornadas de onboarding customizadas para diferentes perfis de cliente.",
+              },
+              {
+                title: "Conversão e vendas",
+                content:
+                  "Geração de propostas personalizadas, criação de demos customizadas, assistentes de vendas com IA, e otimização de pricing baseada em segmentação e propensão.",
+              },
+              {
+                title: "Retenção e expansão",
+                content:
+                  "Previsão de churn, identificação de oportunidades de upsell/cross-sell, campanhas de reativação, e personalização de experiências pós-venda.",
+              },
+            ],
           },
           {
-            title: "Simulações e Ambientes Virtuais",
+            title: "Arquitetura técnica e funcionamento",
             content:
-              "Criação de cenários de treinamento realistas para medicina, aviação, engenharia e outras áreas que requerem prática segura.",
+              "Sistema integrado que combina dados, IA e automação para criar experiências personalizadas em escala.",
+            subtopics: [
+              {
+                title: "Pipeline de dados e enriquecimento",
+                content:
+                  "1) Coleta de dados (CRM, website, redes sociais, dados externos); 2) Enriquecimento com firmografia, comportamento e contexto; 3) Segmentação dinâmica baseada em múltiplos critérios; 4) Scoring preditivo com modelos de ML; 5) Atualização contínua de perfis.",
+              },
+              {
+                title: "Geração de conteúdo com IA",
+                content:
+                  "LLMs para criação de e-mails, copies, propostas e conteúdo personalizado; templates dinâmicos com variáveis contextuais; validação de qualidade e compliance; A/B testing automático de variações.",
+              },
+              {
+                title: "Orquestração multi-canal",
+                content:
+                  "Sincronização entre canais (e-mail, SMS, redes sociais, ads); timing inteligente baseado em comportamento; fallbacks e redundâncias; tracking unificado de engajamento e conversão.",
+              },
+            ],
           },
           {
-            title: "Avaliação e Feedback",
+            title: "Métricas e KPIs de sucesso",
             content:
-              "Análise automática de redações, códigos e projetos. Fornecimento de feedback construtivo e sugestões de melhoria.",
+              "Indicadores para medir o desempenho do sistema e seu impacto no funil de vendas e marketing.",
+            subtopics: [
+              {
+                title: "Métricas de aquisição",
+                content:
+                  "Qualidade dos leads gerados, taxa de conversão por etapa do funil, CAC (Custo de Aquisição de Cliente), velocity do pipeline, e ROI por canal/campanha.",
+              },
+              {
+                title: "Métricas de engajamento",
+                content:
+                  "Taxa de abertura e CTR de e-mails, tempo de resposta, engajamento com conteúdo, score de propensão, e qualidade das interações.",
+              },
+              {
+                title: "Métricas de conversão e retenção",
+                content:
+                  "Taxa de conversão de leads em oportunidades, win rate, LTV (Lifetime Value), churn rate, e taxa de expansão (upsell/cross-sell).",
+              },
+            ],
+          },
+          {
+            title: "Considerações críticas e compliance",
+            content:
+              "Aspectos essenciais para implementação ética, legal e eficaz de automações de vendas e marketing.",
+            subtopics: [
+              {
+                title: "Compliance e regulamentações",
+                content:
+                  "LGPD/GDPR para dados pessoais, CAN-SPAM para e-mails, opt-in/opt-out, direito ao esquecimento, e conformidade com regulamentações específicas do setor.",
+              },
+              {
+                title: "Qualidade e personalização",
+                content:
+                  "Evitar alucinações e claims não suportados, validação de dados antes do envio, deduplicação de leads, e monitoramento de qualidade do conteúdo gerado.",
+              },
+              {
+                title: "Experiência do usuário",
+                content:
+                  "Frequência adequada de contato, relevância do conteúdo, facilidade de cancelamento, e respeito às preferências de comunicação do usuário.",
+              },
+            ],
+          },
+          {
+            title: "Estratégia de implementação",
+            content:
+              "Abordagem incremental para maximizar ROI e minimizar riscos, começando com casos de uso de alto impacto.",
+            subtopics: [
+              {
+                title: "Quick win inicial",
+                content:
+                  "Sequências outbound com e-mails 100% personalizados baseados em 3-5 sinais firmográficos e dor específica do setor, com segmentação simples e métricas básicas.",
+                isPositive: true,
+              },
+              {
+                title: "Expansão gradual",
+                content:
+                  "Adicione enriquecimento de dados, scoring preditivo, multi-canal, e otimização automática conforme valida os resultados e ganha confiança no sistema.",
+              },
+              {
+                title: "Integração e automação avançada",
+                content:
+                  "Conecte com CRM, sistemas de marketing, e implemente workflows automatizados para lead nurturing, qualificação e conversão com mínima intervenção manual.",
+              },
+            ],
           },
         ],
         bullets: [
-          "Tutoria adaptativa personalizada",
-          "Conteúdo educacional gerado por IA",
-          "Simulações e ambientes virtuais",
-          "Avaliação automática e feedback",
+          "Personalização em escala com IA generativa",
+          "Orquestração multi-canal inteligente",
+          "Compliance e qualidade integrados",
+          "ROI mensurável através de métricas de conversão",
+          "Experiências únicas e relevantes para cada prospecto",
         ],
       },
       {
-        title: "Aplicações em Saúde e Medicina",
+        title: "Customer Support & Operations",
         description:
-          "Como a IA generativa está sendo aplicada na área da saúde para diagnóstico, pesquisa e atendimento ao paciente.",
+          "Atendimento e backoffice com agentes, triagem e automações para melhorar experiência do cliente.",
         topics: [
           {
-            title: "Diagnóstico por Imagem",
+            title: "O que é Customer Support & Operations",
             content:
-              "Análise de radiografias, ressonâncias e tomografias para detectar anomalias e auxiliar no diagnóstico médico.",
+              "Sistema inteligente que combina IA generativa, RAG (Retrieval-Augmented Generation) e automação para transformar o atendimento ao cliente e operações de backoffice. Vai além de chatbots simples, criando assistentes que entendem contexto, resolvem problemas complexos e aprendem continuamente para melhorar a experiência do cliente e a eficiência operacional.",
+            subtopics: [
+              {
+                title: "Componentes principais",
+                content:
+                  "Base de conhecimento inteligente, classificação automática de intenções, agentes assistivos para humanos, automação de workflows, e análise contínua de performance e satisfação.",
+              },
+              {
+                title: "Diferença dos sistemas tradicionais",
+                content:
+                  "Enquanto sistemas tradicionais usam scripts fixos e regras simples, a IA generativa entende contexto, resolve problemas complexos e se adapta dinamicamente às necessidades específicas de cada cliente.",
+              },
+            ],
           },
           {
-            title: "Descoberta de Medicamentos",
+            title: "Casos de uso e aplicações práticas",
             content:
-              "Geração de moléculas candidatas para novos medicamentos, otimização de compostos existentes e predição de propriedades farmacológicas.",
+              "Aplicações específicas que melhoram significativamente a experiência do cliente e a eficiência operacional.",
+            subtopics: [
+              {
+                title: "Atendimento ao cliente",
+                content:
+                  "Chatbots inteligentes com RAG para respostas precisas, agentes assistivos que sugerem soluções para atendentes humanos, triagem automática de tickets, e resolução de problemas simples sem intervenção humana.",
+              },
+              {
+                title: "Operações de backoffice",
+                content:
+                  "Processamento automático de solicitações, automação de reembolsos e cancelamentos, validação de documentos, sumarização de tickets longos, e geração de relatórios personalizados.",
+              },
+              {
+                title: "Gestão de conhecimento",
+                content:
+                  "Manutenção automática da base de conhecimento, identificação de gaps de informação, criação de FAQs dinâmicas, e treinamento contínuo de novos atendentes.",
+              },
+              {
+                title: "Análise e insights",
+                content:
+                  "Detecção de tendências em tickets, análise de sentimento do cliente, identificação de problemas recorrentes, e recomendações para melhorias de produto/serviço.",
+              },
+            ],
           },
           {
-            title: "Documentação Médica",
+            title: "Arquitetura técnica e funcionamento",
             content:
-              "Geração automática de prontuários, relatórios de exames e documentação clínica a partir de consultas e procedimentos.",
+              "Sistema integrado que combina IA, conhecimento e automação para criar experiências de atendimento superiores.",
+            subtopics: [
+              {
+                title: "Pipeline de processamento",
+                content:
+                  "1) Ingestão e estruturação da base de conhecimento; 2) Criação de embeddings e indexação vetorial; 3) Classificação de intenção e roteamento; 4) Geração de respostas com RAG; 5) Execução de ações via APIs/workflows; 6) Captura de feedback e aprendizado contínuo.",
+              },
+              {
+                title: "Tecnologias e integrações",
+                content:
+                  "RAG com embeddings (OpenAI, Cohere), classificação com modelos de transformer, integração com CRMs e sistemas de tickets, APIs para ações automatizadas, e analytics em tempo real.",
+              },
+              {
+                title: "Gestão de conhecimento",
+                content:
+                  "Versionamento de documentos, controle de qualidade de conteúdo, atualização automática baseada em feedback, e estruturação semântica para busca eficiente.",
+              },
+            ],
           },
           {
-            title: "Educação Médica",
+            title: "Métricas e KPIs de sucesso",
             content:
-              "Criação de casos clínicos para treinamento, simulações de procedimentos e materiais educacionais para profissionais da saúde.",
+              "Indicadores para medir o impacto no atendimento ao cliente e na eficiência operacional.",
+            subtopics: [
+              {
+                title: "Métricas de satisfação",
+                content:
+                  "CSAT (Customer Satisfaction Score), NPS (Net Promoter Score), FCR (First Contact Resolution), tempo de resolução, e taxa de escalação para atendentes humanos.",
+              },
+              {
+                title: "Métricas de eficiência",
+                content:
+                  "AHT (Average Handling Time), taxa de autoatendimento, throughput de tickets, custo por contato, e redução de carga de trabalho manual.",
+              },
+              {
+                title: "Métricas de qualidade",
+                content:
+                  "Precisão das respostas automáticas, taxa de resolução sem intervenção humana, qualidade das sugestões para atendentes, e redução de erros operacionais.",
+              },
+            ],
+          },
+          {
+            title: "Considerações críticas e implementação",
+            content:
+              "Aspectos essenciais para implementação segura, escalável e que realmente melhora a experiência do cliente.",
+            subtopics: [
+              {
+                title: "Escopo e limites",
+                content:
+                  "Definir claramente o que pode ser automatizado vs. o que requer intervenção humana, estabelecer fallbacks claros, e monitorar continuamente a qualidade das interações.",
+              },
+              {
+                title: "Segurança e privacidade",
+                content:
+                  "Proteção de dados pessoais (LGPD/GDPR), criptografia de conversas, controle de acesso baseado em roles, e auditoria de todas as interações.",
+              },
+              {
+                title: "Gestão de conhecimento",
+                content:
+                  "Controle de versões da base de conhecimento, validação de conteúdo antes da publicação, atualização contínua baseada em feedback, e treinamento de novos atendentes.",
+              },
+            ],
+          },
+          {
+            title: "Estratégia de implementação",
+            content:
+              "Abordagem incremental para maximizar valor e minimizar riscos, começando com casos de uso de alto impacto.",
+            subtopics: [
+              {
+                title: "Quick win inicial",
+                content:
+                  "Assistente interno para operadores com \"respostas sugeridas\" e links para documentação relevante; reduz AHT sem risco direto ao cliente e permite validação da qualidade.",
+                isPositive: true,
+              },
+              {
+                title: "Expansão gradual",
+                content:
+                  "Adicione automação de tickets simples, chatbots para perguntas frequentes, e processamento automático de solicitações conforme valida os resultados e ganha confiança.",
+              },
+              {
+                title: "Integração e automação avançada",
+                content:
+                  "Conecte com sistemas existentes, implemente workflows automatizados para casos complexos, e adicione análise preditiva para antecipar problemas e melhorar proativamente a experiência.",
+              },
+            ],
           },
         ],
         bullets: [
-          "Diagnóstico assistido por IA",
-          "Descoberta e otimização de medicamentos",
-          "Documentação médica automatizada",
-          "Educação e treinamento médico",
+          "RAG inteligente para base de conhecimento dinâmica",
+          "Agent assist e automação de workflows",
+          "Fallback humano claro e monitoramento contínuo",
+          "Métricas de satisfação e eficiência integradas",
+          "Experiência do cliente superior com custos reduzidos",
         ],
       },
       {
-        title: "Aplicações em Desenvolvimento de Software",
+        title: "Data & Analytics Augmentation",
         description:
-          "Como desenvolvedores estão usando IA generativa para acelerar o desenvolvimento, melhorar a qualidade do código e automatizar tarefas.",
+          "Aceleração de insights e análises com NL2SQL, storytelling e detecção de anomalias.",
         topics: [
           {
-            title: "Copilotos de Código",
+            title: "O que é",
             content:
-              "Assistentes que sugerem código, completam funções e ajudam na depuração. Exemplos: GitHub Copilot, Cursor, Amazon CodeWhisperer.",
+              "Aceleração de insights e análises com NL2SQL, storytelling e anomalias.",
           },
           {
-            title: "Geração de Testes",
+            title: "Casos de uso",
             content:
-              "Criação automática de testes unitários, de integração e end-to-end. Geração de dados de teste e cenários de teste.",
+              "Pergunte-aos-dados, geração de queries, explicação de painéis, alertas inteligentes, previsão de demanda.",
           },
           {
-            title: "Documentação e Comentários",
+            title: "Como funciona",
             content:
-              "Geração automática de documentação técnica, comentários no código e READMEs baseados no código fonte.",
+              "Catálogo + esquema → NL2SQL com validação → execução segura → resumo em linguagem natural → trilha de origem (proveniência).",
           },
           {
-            title: "Refatoração e Otimização",
+            title: "Métricas",
             content:
-              "Sugestões de melhorias no código, identificação de problemas de performance e refatoração automática.",
+              "Taxa de sucesso de consultas, tempo-até-insight, adoção por time de negócio, precisão vs. analista.",
+          },
+          {
+            title: "Cuidados",
+            content:
+              "Camadas semânticas bem definidas, políticas row-level, \"dry-run\" e aprovação antes de executar queries caras.",
+          },
+          {
+            title: "Quick win",
+            content:
+              "NL2SQL somente-leitura sobre views curadas + geração de resumo executivo automático nos dashboards.",
+            isPositive: true,
           },
         ],
         bullets: [
-          "Copilotos para desenvolvimento",
-          "Geração automática de testes",
-          "Documentação técnica automatizada",
-          "Refatoração e otimização de código",
+          "NL2SQL com validação",
+          "Execução segura e aprovação",
+          "Trilha de proveniência",
+          "Adoção por usuários",
         ],
       },
       {
-        title: "Aplicações em Pesquisa e Ciência",
+        title: "Web & Workflow Automation",
         description:
-          "Como pesquisadores estão usando IA generativa para acelerar descobertas científicas e análise de dados.",
+          "Orquestração de rotinas (RPA + agentes) entre sistemas e APIs para automatizar processos complexos.",
         topics: [
           {
-            title: "Análise de Dados Científicos",
+            title: "O que é",
             content:
-              "Processamento e análise de grandes volumes de dados experimentais, identificação de padrões e geração de hipóteses.",
+              "Orquestração de rotinas (RPA + agentes) entre sistemas e APIs.",
           },
           {
-            title: "Simulações e Modelagem",
+            title: "Casos de uso",
             content:
-              "Criação de modelos computacionais complexos, simulações de fenômenos físicos e predições baseadas em dados históricos.",
+              "Extração de sites/portais, preenchimento de formulários, reconciliação entre ERPs/CRMs, triagem de e-mails, monitoramento de mudanças.",
           },
           {
-            title: "Revisão de Literatura",
+            title: "Como funciona",
             content:
-              "Análise automática de artigos científicos, sumarização de pesquisas e identificação de lacunas no conhecimento.",
+              "Detecta evento → agente interpreta contexto → chama APIs/robôs → validações → logs e retry/compensação.",
           },
           {
-            title: "Colaboração Científica",
+            title: "Métricas",
             content:
-              "Ferramentas que facilitam a colaboração entre pesquisadores, compartilhamento de dados e comunicação científica.",
+              "Throughput, % de sucesso sem intervenção, tempo por tarefa, taxa de exceções.",
+          },
+          {
+            title: "Cuidados",
+            content:
+              "Fragilidade de seletores web, limites de API/TOS, idempotência e reprocessos, segurança de credenciais.",
+          },
+          {
+            title: "Quick win",
+            content:
+              "Automação de \"swivel-chair\" (copiar/colar entre dois sistemas) com validações simples e relatórios de exceção.",
+            isPositive: true,
           },
         ],
         bullets: [
-          "Análise de dados científicos",
-          "Simulações e modelagem computacional",
-          "Revisão automática de literatura",
-          "Colaboração e comunicação científica",
+          "RPA + agentes inteligentes",
+          "Validações e compensação",
+          "Idempotência e reprocessos",
+          "Segurança de credenciais",
         ],
       },
       {
-        title: "Implementação e Governança",
+        title: "Programming & Developer Productivity",
         description:
-          "Considerações práticas para implementar IA generativa em organizações, incluindo governança, ética e ROI.",
+          "Ferramentas para acelerar ciclo de desenvolvimento e reduzir defeitos com IA generativa.",
         topics: [
           {
-            title: "Estratégia de Implementação",
+            title: "O que é",
             content:
-              "Identificação de casos de uso prioritários, definição de métricas de sucesso e criação de roadmap de implementação.",
+              "Ferramentas para acelerar ciclo de desenvolvimento e reduzir defeitos.",
           },
           {
-            title: "Governança e Ética",
+            title: "Casos de uso",
             content:
-              "Políticas de uso responsável, comitês de ética, auditoria de modelos e conformidade regulatória (LGPD, GDPR).",
+              "Autocomplete/codex, geração de testes, refatoração, migração de frameworks, documentação e revisão de PRs.",
           },
           {
-            title: "ROI e Métricas",
+            title: "Como funciona",
             content:
-              "Medição de retorno sobre investimento, métricas de produtividade, satisfação do usuário e impacto nos negócios.",
+              "Contexto do repo (AST, dependências) → LLM com políticas de segurança → sugestão explicada → checagens (lint, SAST, secrets) → CI/CD.",
           },
           {
-            title: "Capacitação e Mudança Cultural",
+            title: "Métricas",
             content:
-              "Treinamento de equipes, gestão da mudança e criação de cultura de inovação responsável com IA.",
+              "Lead time de PR, cobertura de testes, defeitos em produção, MTTR.",
+          },
+          {
+            title: "Cuidados",
+            content:
+              "Vazamento de IP/segredos, licenças, \"overreliance\"; sempre manter barreiras de revisão humana e scanning.",
+          },
+          {
+            title: "Quick win",
+            content:
+              "Template de PR com checklist + bot que gera testes/sumários e aponta riscos antes do code review.",
+            isPositive: true,
           },
         ],
         bullets: [
-          "Estratégia e roadmap de implementação",
-          "Governança ética e conformidade",
-          "Medição de ROI e impacto",
-          "Capacitação e mudança cultural",
+          "Contexto do repositório",
+          "Políticas de segurança",
+          "Checagens automáticas",
+          "Revisão humana obrigatória",
         ],
       },
-    ],
-  },
-];
+      {
+        title: "Financial Services & Risk",
+        description:
+          "Modelos para crédito, fraude, AML/KYC e operações financeiras com IA generativa.",
+        topics: [
+          {
+            title: "O que é",
+            content:
+              "Modelos para crédito, fraude, AML/KYC e operações financeiras.",
+          },
+          {
+            title: "Casos de uso",
+            content:
+              "Score de crédito, detecção de fraude em tempo real, sanções/PEP, chargeback, priorização de cobrança.",
+          },
+          {
+            title: "Como funciona",
+            content:
+              "Features transacionais + bureaus + grafos → modelos híbridos (ML clássico + LLM para explicações) → regras de negócio → monitoramento e drift.",
+          },
+          {
+            title: "Métricas",
+            content:
+              "AUC/KS, precisão/recall por faixa, falsa-positividade, perdas (NPL), aprovação com risco controlado.",
+          },
+          {
+            title: "Cuidados",
+            content:
+              "Explicabilidade, viés/discriminação, requisitos regulatórios, auditoria de modelos e rejeições adversas.",
+          },
+          {
+            title: "Quick win",
+            content:
+              "Camada antifraude incremental (regras + modelo leve) antes do gateway de pagamento com feedback de chargebacks.",
+            isPositive: true,
+          },
+        ],
+        bullets: [
+          "Modelos híbridos ML + LLM",
+          "Explicabilidade e auditoria",
+          "Compliance regulatório",
+          "Monitoramento de drift",
+        ],
+      },
+      {
+        title: "Social & Brand Intelligence",
+        description:
+          "Monitoramento de marca, sentimento e temas em mídias sociais e notícias com IA generativa.",
+        topics: [
+          {
+            title: "O que é",
+            content:
+              "Monitoramento de marca, sentimento e temas em mídias sociais e notícias.",
+          },
+          {
+            title: "Casos de uso",
+            content:
+              "Análise de sentimento/motivos, detecção de crises, share of voice, mapeamento de influenciadores, benchmarking competitivo.",
+          },
+          {
+            title: "Como funciona",
+            content:
+              "Coleta (APIs/crawlers) → deduplicação/limpeza → classificação de sentimento/emoções e tópicos → sumarização por persona/canal → alertas.",
+          },
+          {
+            title: "Métricas",
+            content:
+              "Sentimento ponderado, variação diária/semana, share of voice, tempo até detecção, impacto por canal.",
+          },
+          {
+            title: "Cuidados",
+            content:
+              "Amostragem enviesada, bots/spam, ironia/sarcasmo, compliance com termos de uso e privacidade.",
+          },
+          {
+            title: "Quick win",
+            content:
+              "Painel de \"early-warning\" com alertas quando menções negativas sobem X% vs. base e resumo acionável para PR.",
+            isPositive: true,
+          },
+        ],
+        bullets: [
+          "Coleta e limpeza de dados",
+          "Classificação de sentimento",
+          "Detecção de crises",
+          "Alertas e sumarização",
+        ],
+             },
+     ],
+   },
+
+   {
+     id: "ferramentas",
+     title: "Ferramentas de IA",
+     description:
+       "Explore as principais ferramentas e plataformas de IA generativa disponíveis no mercado e aprenda a escolher e usar as melhores para cada necessidade.",
+     image: avancadoImg,
+     imageAlt: "Ilustração de ferramentas e plataformas de IA",
+     icon: "Wrench",
+     slides: [
+               {
+          title: "Panorama das Ferramentas de IA",
+          description:
+            "Uma visão geral das principais categorias de ferramentas de IA generativa disponíveis no mercado, seus casos de uso ideais e como escolher a ferramenta certa para cada projeto.",
+          image: import.meta.env.BASE_URL + "ai-leaders.png",
+          imageAlt: "Gráfico Gartner - Generative AI Engineering Quadrant",
+          imageCaption: "Fonte: Gartner — Generative AI Engineering (Dezembro 2024)",
+          imageScale: 0.8,
+          topics: [
+           {
+             title: "Por que conhecer as ferramentas",
+             content:
+               "Compreender o ecossistema de ferramentas de IA ajuda a tomar decisões informadas sobre qual tecnologia usar, otimizar custos e implementar soluções mais eficientes. Cada ferramenta tem suas forças e limitações específicas.",
+           },
+           {
+             title: "Categorias principais",
+             content:
+               "As ferramentas se dividem em: modelos de linguagem (LLMs), geradores de imagem, assistentes de código, plataformas de automação, ferramentas de análise e plataformas de desenvolvimento. Cada categoria atende a necessidades específicas.",
+           },
+           {
+             title: "Critérios de escolha",
+             content:
+               "Considere fatores como: custo por token/request, qualidade da saída, facilidade de integração, recursos de segurança, suporte e documentação, além da comunidade e ecossistema ao redor da ferramenta.",
+           },
+           {
+             title: "Estratégia de adoção",
+             content:
+               "Comece com ferramentas gratuitas ou de baixo custo para experimentação, avalie resultados e gradualmente migre para soluções mais robustas conforme a necessidade e o orçamento permitirem.",
+           },
+         ],
+         bullets: [
+           "Conhecer ferramentas otimiza custos e eficiência",
+           "Cada categoria atende necessidades específicas",
+           "Avalie custo, qualidade e facilidade de uso",
+           "Adoção gradual e baseada em resultados",
+         ],
+       },
+       {
+         title: "Modelos de Linguagem (LLMs)",
+         description:
+           "As principais plataformas de modelos de linguagem e como escolher entre elas para diferentes aplicações.",
+         topics: [
+                       {
+              title: "OpenAI (GPT-5, GPT-4, GPT-3.5)",
+              content:
+                "Líder do mercado com GPT-5, oferecendo qualidade excepcional de texto, raciocínio e multimodalidade. Ideal para aplicações que demandam máxima precisão e criatividade. Custo: $0.005-0.015 por 1K tokens de entrada, $0.015-0.03 por saída.",
+              subtopics: [
+                {
+                  title: "Vantagens",
+                  content:
+                    "Melhor qualidade geral, excelente raciocínio, contexto expandido (1M+ tokens), ferramentas robustas (function calling), multimodalidade avançada, API estável e bem documentada.",
+                  isPositive: true,
+                },
+                {
+                  title: "Limitações",
+                  content:
+                    "Custo mais alto, sem opção de self-hosted, dependência da OpenAI, possíveis restrições de conteúdo.",
+                  isPositive: false,
+                },
+              ],
+            },
+           {
+             title: "Anthropic (Claude)",
+             content:
+               "Claude 3.5 Sonnet oferece excelente qualidade com foco em segurança e alinhamento. Ideal para aplicações empresariais e que lidam com dados sensíveis. Custo similar ao GPT-4.",
+             subtopics: [
+               {
+                 title: "Vantagens",
+                 content:
+                   "Excelente em análise de documentos, forte em segurança, boa performance em tarefas complexas, contexto de 200K tokens.",
+                 isPositive: true,
+               },
+               {
+                 title: "Limitações",
+                 content:
+                   "Menos ferramentas disponíveis, ecossistema menor, menos integrações prontas.",
+                 isPositive: false,
+               },
+             ],
+           },
+           {
+             title: "Google (Gemini)",
+             content:
+               "Gemini Pro oferece boa qualidade a custo competitivo. Integração nativa com ecossistema Google. Custo: $0.0005-0.0015 por 1K tokens.",
+             subtopics: [
+               {
+                 title: "Vantagens",
+                 content:
+                   "Custo baixo, integração com Google Workspace, boa performance em tarefas gerais, contexto de 1M tokens.",
+                 isPositive: true,
+               },
+               {
+                 title: "Limitações",
+                 content:
+                   "Qualidade ligeiramente inferior ao GPT-4, menos ferramentas, documentação menos robusta.",
+                 isPositive: false,
+               },
+             ],
+           },
+           {
+             title: "Modelos Open Source",
+             content:
+               "Llama 3, Mistral, CodeLlama oferecem controle total e privacidade. Requerem infraestrutura própria. Custo: apenas infraestrutura.",
+             subtopics: [
+               {
+                 title: "Vantagens",
+                 content:
+                   "Controle total, privacidade completa, sem custos de API, customização ilimitada.",
+                 isPositive: true,
+               },
+               {
+                 title: "Limitações",
+                 content:
+                   "Requer infraestrutura, menor qualidade geral, mais trabalho de manutenção, menos ferramentas.",
+                 isPositive: false,
+               },
+             ],
+           },
+         ],
+                   bullets: [
+            "GPT-5: qualidade excepcional, multimodalidade avançada",
+            "Claude: segurança e análise de documentos",
+            "Gemini: custo baixo, integração Google",
+            "Open source: controle total, mais trabalho",
+          ],
+       },
+               {
+          title: "Geradores de Imagem",
+          description:
+            "Ferramentas para criação e edição de imagens usando IA generativa, desde arte conceitual até imagens realistas.",
+          topics: [
+            {
+              title: "Midjourney",
+              content:
+                "Plataforma líder em arte conceitual e criativa, conhecida por sua qualidade artística excepcional e estilo único. A interface funciona via Discord, facilitando colaboração e compartilhamento. Oferece controle avançado sobre estilo, composição e atmosfera através de prompts sofisticados. Custo: $10-30/mês dependendo do plano. Ideal para: design de produtos, marketing visual, conceitos de filmes/jogos, ilustrações artísticas e mood boards criativos.",
+              subtopics: [
+                {
+                  title: "Vantagens",
+                  content:
+                    "Qualidade artística superior, comunidade ativa, controle fino de estilo, integração com Discord para colaboração, resultados consistentes em séries.",
+                  isPositive: true,
+                },
+                {
+                  title: "Limitações",
+                  content:
+                    "Interface via Discord (pode ser confusa), sem API pública, menos controle técnico, foco em arte conceitual (não fotorealismo).",
+                  isPositive: false,
+                },
+              ],
+            },
+            {
+              title: "DALL-E 3",
+              content:
+                "Modelo da OpenAI que se destaca pela precisão em seguir prompts textuais e gerar imagens que correspondem fielmente às descrições. Integrado ao ecossistema OpenAI, oferece APIs robustas para aplicações comerciais. Excelente para tarefas que exigem precisão e controle sobre o conteúdo gerado. Custo: $0.04-0.12 por imagem. Ideal para: aplicações comerciais, produtos, ilustrações técnicas, marketing que precisa de controle preciso sobre o resultado.",
+              subtopics: [
+                {
+                  title: "Vantagens",
+                  content:
+                    "Precisão excepcional de prompt, integração com APIs OpenAI, qualidade consistente, bom para aplicações comerciais, suporte a múltiplos estilos.",
+                  isPositive: true,
+                },
+                {
+                  title: "Limitações",
+                  content:
+                    "Custo por imagem, dependência da OpenAI, menos flexibilidade artística que Midjourney, restrições de conteúdo.",
+                  isPositive: false,
+                },
+              ],
+            },
+            {
+              title: "Stable Diffusion",
+              content:
+                "Framework open source que oferece controle total sobre o processo de geração. Permite customização avançada de modelos, fine-tuning e integração em aplicações próprias. Requer conhecimento técnico para configuração e otimização. Custo: apenas infraestrutura (servidores, GPUs). Ideal para: pesquisa acadêmica, desenvolvimento de aplicações customizadas, empresas que precisam de controle total sobre dados e processos, prototipagem de novos modelos.",
+              subtopics: [
+                {
+                  title: "Vantagens",
+                  content:
+                    "Controle total, privacidade completa, customização ilimitada, sem custos de API, pode rodar localmente, ideal para pesquisa.",
+                  isPositive: true,
+                },
+                {
+                  title: "Limitações",
+                  content:
+                    "Requer conhecimento técnico, infraestrutura própria, mais trabalho de configuração, qualidade pode variar dependendo do modelo usado.",
+                  isPositive: false,
+                },
+              ],
+            },
+            {
+              title: "Adobe Firefly",
+              content:
+                "Solução integrada ao Creative Suite da Adobe, focada em uso comercial seguro e responsável. Treinado com dados licenciados, oferece proteção legal para uso comercial. Integração nativa com Photoshop, Illustrator e outras ferramentas Adobe. Custo: incluído no Creative Cloud. Ideal para: designers profissionais, agências, empresas que precisam de segurança legal, workflows integrados com ferramentas Adobe.",
+              subtopics: [
+                {
+                  title: "Vantagens",
+                  content:
+                    "Integração nativa com Creative Suite, uso comercial seguro, dados licenciados, workflow profissional, suporte Adobe.",
+                  isPositive: true,
+                },
+                {
+                  title: "Limitações",
+                  content:
+                    "Dependente do ecossistema Adobe, menos flexibilidade que soluções open source, custo do Creative Cloud.",
+                  isPositive: false,
+                },
+              ],
+            },
+            {
+              title: "Canva AI",
+              content:
+                "Ferramenta integrada ao Canva que democratiza a criação de imagens com IA. Interface intuitiva e amigável, ideal para usuários não técnicos. Foco em marketing, redes sociais e design básico. Custo: incluído no Canva Pro. Ideal para: pequenas empresas, profissionais de marketing, criadores de conteúdo, usuários que precisam de simplicidade e rapidez.",
+              subtopics: [
+                {
+                  title: "Vantagens",
+                  content:
+                    "Interface muito fácil de usar, integração com Canva, ideal para marketing, sem conhecimento técnico necessário, templates prontos.",
+                  isPositive: true,
+                },
+                {
+                  title: "Limitações",
+                  content:
+                    "Menos controle avançado, dependente do Canva, qualidade pode ser inferior a ferramentas especializadas.",
+                  isPositive: false,
+                },
+              ],
+            },
+          ],
+          bullets: [
+            "Midjourney: arte conceitual superior, comunidade ativa",
+            "DALL-E: precisão de prompt, APIs robustas",
+            "Stable Diffusion: controle total, open source",
+            "Adobe Firefly: uso comercial seguro, integração nativa",
+            "Canva AI: simplicidade, democratização do design",
+          ],
+        },
+               {
+          title: "Assistentes de Código",
+          description:
+            "Ferramentas que aceleram o desenvolvimento de software usando IA generativa para escrita, revisão e debugging de código.",
+          topics: [
+            {
+              title: "GitHub Copilot",
+              content:
+                "Assistente de código líder do mercado, desenvolvido pela Microsoft em parceria com a OpenAI. Integrado nativamente ao Visual Studio Code, Visual Studio, Neovim e outros editores populares. Oferece sugestões de código em tempo real baseadas no contexto do arquivo atual, comentários e padrões do projeto. Custo: $10/mês para uso individual, $19/mês para uso empresarial. Baseado no modelo Codex (derivado do GPT).",
+              subtopics: [
+                {
+                  title: "Vantagens",
+                  content:
+                    "Integração nativa com VS Code, sugestões em tempo real, suporte a múltiplas linguagens, aprendizado do contexto do projeto, extensa documentação e comunidade ativa.",
+                  isPositive: true,
+                },
+                {
+                  title: "Limitações",
+                  content:
+                    "Custo mensal, dependência da Microsoft/OpenAI, pode gerar código com bugs, nem sempre segue as convenções específicas do projeto.",
+                  isPositive: false,
+                },
+              ],
+            },
+            {
+              title: "Cursor",
+              content:
+                "Editor de código moderno construído especificamente para desenvolvimento com IA. Inclui chat integrado com GPT-4, geração de código por comando de voz, refatoração inteligente e debugging assistido por IA. Interface limpa e intuitiva, similar ao VS Code. Custo: gratuito com limites de uso, planos pagos para uso intensivo. Ideal para desenvolvedores que querem uma experiência nativa de IA no desenvolvimento.",
+              subtopics: [
+                {
+                  title: "Vantagens",
+                  content:
+                    "Chat integrado com GPT-4, interface moderna e intuitiva, geração de código por voz, refatoração inteligente, debugging assistido, gratuito para uso básico.",
+                  isPositive: true,
+                },
+                {
+                  title: "Limitações",
+                  content:
+                    "Ecossistema de extensões menor que VS Code, dependência da internet para funcionalidades de IA, ainda em desenvolvimento ativo.",
+                  isPositive: false,
+                },
+              ],
+            },
+            {
+              title: "Claude (Anthropic)",
+              content:
+                "Modelo de linguagem da Anthropic que se destaca na análise e explicação de código. Excelente para revisão de código, debugging, documentação e explicação de conceitos complexos. Pode analisar arquivos inteiros, identificar problemas de segurança, sugerir melhorias e explicar algoritmos em detalhes. Custo: por token usado. Ideal para tarefas de análise e compreensão de código existente.",
+              subtopics: [
+                {
+                  title: "Vantagens",
+                  content:
+                    "Excelente em análise de código, explicações detalhadas, identificação de bugs e problemas de segurança, forte em documentação, contexto amplo para análise.",
+                  isPositive: true,
+                },
+                {
+                  title: "Limitações",
+                  content:
+                    "Não é um editor integrado, custo por token pode ser alto para uso intensivo, menos focado em geração de código novo.",
+                  isPositive: false,
+                },
+              ],
+            },
+            {
+              title: "CodeWhisperer (AWS)",
+              content:
+                "Assistente de código da Amazon Web Services, focado em desenvolvimento seguro na nuvem AWS. Integrado ao AWS Cloud9, VS Code, IntelliJ e outros IDEs. Oferece sugestões específicas para AWS SDKs, APIs e serviços. Inclui verificações de segurança automáticas e conformidade com melhores práticas da AWS. Custo: incluído em planos AWS Developer Tools, gratuito para uso individual.",
+              subtopics: [
+                {
+                  title: "Vantagens",
+                  content:
+                    "Integração nativa com serviços AWS, verificações de segurança automáticas, conhecimento específico de APIs AWS, gratuito para uso individual, conformidade com melhores práticas.",
+                  isPositive: true,
+                },
+                {
+                  title: "Limitações",
+                  content:
+                    "Foco limitado ao ecossistema AWS, menos flexível para desenvolvimento geral, dependência da infraestrutura AWS.",
+                  isPositive: false,
+                },
+              ],
+            },
+            {
+              title: "Tabnine",
+              content:
+                "Assistente de código que prioriza privacidade e controle total. Oferece modelos locais que rodam na infraestrutura da empresa, garantindo que nenhum código seja enviado para servidores externos. Suporta múltiplas linguagens e IDEs. Ideal para empresas com requisitos rigorosos de segurança e privacidade. Custo: $12/mês para uso individual, preços empresariais para modelos locais.",
+              subtopics: [
+                {
+                  title: "Vantagens",
+                  content:
+                    "Privacidade total com modelos locais, controle completo sobre dados, adequado para empresas com requisitos de segurança rigorosos, suporte a múltiplas linguagens.",
+                  isPositive: true,
+                },
+                {
+                  title: "Limitações",
+                  content:
+                    "Requer infraestrutura própria para modelos locais, qualidade pode ser inferior a soluções baseadas em nuvem, mais complexo de configurar.",
+                  isPositive: false,
+                },
+              ],
+            },
+            {
+              title: "JetBrains AI Assistant",
+              content:
+                "Assistente de IA integrado aos IDEs da JetBrains (IntelliJ IDEA, PyCharm, WebStorm, etc.). Oferece geração de código, explicações, refatoração e debugging dentro do ambiente familiar dos desenvolvedores. Aproveita o conhecimento profundo que os IDEs da JetBrains têm sobre as linguagens e frameworks. Custo: $10/mês adicional ao plano JetBrains existente.",
+              subtopics: [
+                {
+                  title: "Vantagens",
+                  content:
+                    "Integração profunda com IDEs JetBrains, conhecimento específico de linguagens e frameworks, refatoração inteligente, debugging assistido, ambiente familiar para usuários JetBrains.",
+                  isPositive: true,
+                },
+                {
+                  title: "Limitações",
+                  content:
+                    "Limitado ao ecossistema JetBrains, custo adicional ao IDE, menos flexível que soluções independentes.",
+                  isPositive: false,
+                },
+              ],
+            },
+          ],
+          bullets: [
+            "GitHub Copilot: líder do mercado, integração nativa com VS Code",
+            "Cursor: editor moderno com chat GPT-4 integrado",
+            "Claude: excelente para análise e explicação de código",
+            "CodeWhisperer: foco em desenvolvimento AWS seguro",
+            "Tabnine: privacidade total com modelos locais",
+            "JetBrains AI: integração profunda com IDEs especializados",
+          ],
+        },
+               {
+          title: "Plataformas de Automação",
+          description:
+            "Ferramentas que permitem criar fluxos de trabalho automatizados usando IA generativa para conectar diferentes sistemas e serviços.",
+          topics: [
+            {
+              title: "Zapier",
+              content:
+                "Plataforma líder de automação entre aplicações, conhecida por sua simplicidade e ampla integração. Oferece mais de 5.000 integrações com aplicações populares, incluindo funcionalidades de IA para processamento de texto, análise de dados e tomada de decisões. Interface drag-and-drop intuitiva, ideal para usuários não técnicos. Custo: $20-100/mês dependendo do volume de tarefas. Inclui recursos de IA como formatação inteligente de dados, classificação automática e geração de conteúdo.",
+              subtopics: [
+                {
+                  title: "Vantagens",
+                  content:
+                    "Interface muito intuitiva, ampla integração (5.000+ apps), recursos de IA integrados, documentação excelente, comunidade ativa, suporte robusto.",
+                  isPositive: true,
+                },
+                {
+                  title: "Limitações",
+                  content:
+                    "Custo pode ser alto para uso intensivo, limitações de customização avançada, dependência da plataforma, menos flexibilidade para lógicas complexas.",
+                  isPositive: false,
+                },
+              ],
+            },
+            {
+              title: "Make (Integromat)",
+              content:
+                "Plataforma de automação visual avançada que oferece controle granular sobre workflows complexos. Interface visual com cenários que permitem criar lógicas condicionais sofisticadas, loops e manipulação de dados avançada. Inclui módulos de IA para processamento de linguagem natural, análise de sentimento e geração de conteúdo. Custo: $9-50/mês. Ideal para automações que requerem lógica complexa e transformação de dados.",
+              subtopics: [
+                {
+                  title: "Vantagens",
+                  content:
+                    "Lógica visual avançada, controle granular, cenários complexos, módulos de IA, transformação de dados sofisticada, melhor custo-benefício que Zapier.",
+                  isPositive: true,
+                },
+                {
+                  title: "Limitações",
+                  content:
+                    "Curva de aprendizado mais íngreme, menos integrações que Zapier, interface pode ser complexa para iniciantes, documentação menos extensa.",
+                  isPositive: false,
+                },
+              ],
+            },
+            {
+              title: "n8n",
+              content:
+                "Plataforma de automação open source que oferece controle total sobre workflows e dados. Pode ser self-hosted ou usado na nuvem. Interface visual poderosa com suporte a JavaScript customizado, permitindo automações altamente personalizadas. Inclui integrações com modelos de IA via APIs e suporte a RAG (Retrieval-Augmented Generation). Custo: apenas infraestrutura para self-hosted, planos cloud disponíveis. Ideal para empresas que precisam de controle total e customização avançada.",
+              subtopics: [
+                {
+                  title: "Vantagens",
+                  content:
+                    "Controle total, open source, self-hosted, JavaScript customizado, integração com APIs de IA, sem custos de licença, máxima flexibilidade.",
+                  isPositive: true,
+                },
+                {
+                  title: "Limitações",
+                  content:
+                    "Requer conhecimento técnico, infraestrutura própria, menos integrações prontas, mais trabalho de configuração, comunidade menor.",
+                  isPositive: false,
+                },
+              ],
+            },
+            {
+              title: "Microsoft Power Automate",
+              content:
+                "Solução de automação integrada ao ecossistema Microsoft, parte do Microsoft 365. Oferece automações baseadas em IA para processamento de documentos, análise de dados e integração com serviços Microsoft. Inclui RPA (Robotic Process Automation) para automação de tarefas em desktop. Custo: incluído no Microsoft 365 Business, planos separados disponíveis. Ideal para empresas que já usam o ecossistema Microsoft e precisam de automações empresariais robustas.",
+              subtopics: [
+                {
+                  title: "Vantagens",
+                  content:
+                    "Integração nativa com Microsoft 365, RPA incluído, recursos de IA empresariais, compliance e segurança Microsoft, suporte empresarial robusto.",
+                  isPositive: true,
+                },
+                {
+                  title: "Limitações",
+                  content:
+                    "Limitado ao ecossistema Microsoft, menos integrações com apps de terceiros, custo do Microsoft 365, dependência da infraestrutura Microsoft.",
+                  isPositive: false,
+                },
+              ],
+            },
+            {
+              title: "IFTTT (If This Then That)",
+              content:
+                "Plataforma de automação focada em conectividade simples entre aplicações e dispositivos IoT. Interface baseada em applets (receitas) que conectam triggers e ações. Inclui funcionalidades de IA para processamento de dados e tomada de decisões simples. Custo: $5/mês para plano Pro. Ideal para automações pessoais, IoT e integrações simples entre aplicações populares.",
+              subtopics: [
+                {
+                  title: "Vantagens",
+                  content:
+                    "Simplicidade extrema, foco em IoT, applets prontos, ideal para automações pessoais, interface mobile-friendly, comunidade ativa.",
+                  isPositive: true,
+                },
+                {
+                  title: "Limitações",
+                  content:
+                    "Funcionalidades limitadas para casos complexos, menos controle sobre lógica, dependência de applets existentes, menos recursos de IA.",
+                  isPositive: false,
+                },
+              ],
+            },
+            {
+              title: "Automate.io",
+              content:
+                "Plataforma de automação focada em marketing e vendas, com integrações específicas para CRMs, ferramentas de marketing e análise. Oferece recursos de IA para segmentação de leads, análise de comportamento e personalização de campanhas. Interface visual intuitiva com templates prontos para casos de uso comuns. Custo: $50-200/mês. Ideal para equipes de marketing e vendas que precisam automatizar processos de lead nurturing e análise de dados.",
+              subtopics: [
+                {
+                  title: "Vantagens",
+                  content:
+                    "Foco em marketing/vendas, templates prontos, integrações específicas, recursos de IA para segmentação, suporte especializado.",
+                  isPositive: true,
+                },
+                {
+                  title: "Limitações",
+                  content:
+                    "Foco limitado a marketing/vendas, menos flexibilidade para outros casos de uso, custo mais alto, ecossistema menor.",
+                  isPositive: false,
+                },
+              ],
+            },
+                         {
+               title: "Pipedream",
+               content:
+                 "Plataforma de automação orientada a desenvolvedores, com suporte nativo a código customizado em Node.js, Python e Go. Oferece integração direta com APIs de IA e permite criar workflows altamente customizados. Interface híbrida que combina visual e código. Custo: gratuito para uso básico, planos pagos para uso avançado. Ideal para desenvolvedores que precisam de flexibilidade máxima e integração com ferramentas de IA customizadas.",
+               subtopics: [
+                 {
+                   title: "Vantagens",
+                   content:
+                     "Orientado a desenvolvedores, código customizado, integração direta com APIs, gratuito para uso básico, máxima flexibilidade.",
+                   isPositive: true,
+                 },
+                 {
+                   title: "Limitações",
+                   content:
+                     "Requer conhecimento de programação, menos integrações visuais, comunidade menor, documentação técnica.",
+                   isPositive: false,
+                 },
+               ],
+             },
+             {
+               title: "Retool",
+               content:
+                 "Plataforma de desenvolvimento de aplicações internas que combina interface visual com código customizado. Permite criar dashboards, CRMs, painéis de administração e aplicações de negócio rapidamente. Inclui integrações com modelos de IA via APIs e suporte a JavaScript/TypeScript para lógica customizada. Custo: $10-50/mês por usuário. Ideal para equipes que precisam criar aplicações internas personalizadas com integração de IA.",
+               subtopics: [
+                 {
+                   title: "Vantagens",
+                   content:
+                     "Desenvolvimento rápido de apps internos, interface visual + código, integração com APIs de IA, componentes reutilizáveis, deploy automático, controle de acesso granular.",
+                   isPositive: true,
+                 },
+                 {
+                   title: "Limitações",
+                   content:
+                     "Foco em aplicações internas (não automação), custo por usuário pode ser alto, dependência da plataforma, menos flexibilidade que desenvolvimento nativo.",
+                   isPositive: false,
+                 },
+               ],
+             },
+          ],
+                     bullets: [
+             "Zapier: líder do mercado, interface intuitiva, 5.000+ integrações",
+             "Make: lógica visual avançada, cenários complexos, melhor custo-benefício",
+             "n8n: open source, controle total, JavaScript customizado",
+             "Power Automate: ecossistema Microsoft, RPA incluído, compliance empresarial",
+             "IFTTT: simplicidade extrema, foco em IoT e automações pessoais",
+             "Automate.io: especializado em marketing/vendas, templates prontos",
+             "Pipedream: orientado a desenvolvedores, código customizado, gratuito",
+             "Retool: desenvolvimento rápido de apps internos, interface visual + código",
+           ],
+        },
+               {
+          title: "Ferramentas de Workflow de AI",
+          description:
+            "Plataformas para criar, orquestrar e gerenciar fluxos de trabalho complexos de IA generativa com interfaces visuais e componentes reutilizáveis.",
+          topics: [
+            {
+              title: "Langflow",
+              content:
+                "Interface visual para criar workflows de IA usando componentes do LangChain. Permite conectar diferentes modelos, ferramentas e bases de dados através de uma interface drag-and-drop intuitiva. Custo: gratuito (open source). Ideal para: prototipagem rápida, experimentação com diferentes arquiteturas de IA, desenvolvimento de aplicações RAG e chatbots.",
+              subtopics: [
+                {
+                  title: "Vantagens",
+                  content:
+                    "Interface visual intuitiva, integração nativa com LangChain, gratuito e open source, componentes reutilizáveis, prototipagem rápida, comunidade ativa.",
+                  isPositive: true,
+                },
+                {
+                  title: "Limitações",
+                  content:
+                    "Foco específico em LangChain, menos flexibilidade para workflows muito complexos, dependência do ecossistema LangChain.",
+                  isPositive: false,
+                },
+              ],
+            },
+            {
+              title: "LangChain",
+              content:
+                "Framework para desenvolvimento de aplicações LLM com componentes modulares. Oferece abstrações para chains, agents, memory e tools. Custo: gratuito. Ideal para: desenvolvimento de aplicações LLM complexas, integração com múltiplas APIs.",
+            },
+            {
+              title: "LlamaIndex",
+              content:
+                "Framework especializado em RAG (Retrieval-Augmented Generation) com foco em processamento de documentos e dados estruturados. Custo: gratuito. Ideal para: aplicações de busca e análise de documentos, chatbots com conhecimento específico.",
+            },
+            {
+              title: "Flowise",
+              content:
+                "Plataforma visual para criar chatbots e aplicações de IA sem código. Interface drag-and-drop para conectar modelos, bases de dados e APIs. Custo: gratuito (self-hosted) ou planos cloud. Ideal para: criação rápida de chatbots, aplicações de IA para não desenvolvedores.",
+            },
+            {
+              title: "Semantic Kernel",
+              content:
+                "Framework da Microsoft para integrar LLMs com aplicações existentes. Suporte nativo para C# e Python. Custo: gratuito. Ideal para: integração de IA em aplicações empresariais, desenvolvimento com ecossistema Microsoft.",
+            },
+            {
+              title: "AutoGen",
+              content:
+                "Framework da Microsoft para criar aplicações multi-agente conversacionais. Permite definir agentes especializados que colaboram para resolver tarefas complexas. Custo: gratuito. Ideal para: sistemas multi-agente, automação de workflows complexos, simulações de conversação.",
+            },
+          ],
+          bullets: [
+            "Langflow: interface visual para LangChain, prototipagem rápida",
+            "LangChain: framework modular para aplicações LLM",
+            "LlamaIndex: especializado em RAG e processamento de documentos",
+            "Flowise: criação visual de chatbots sem código",
+            "Semantic Kernel: integração com ecossistema Microsoft",
+            "AutoGen: sistemas multi-agente conversacionais",
+          ],
+        },
+               {
+          title: "Plataformas de Desenvolvimento",
+          description:
+            "Ambientes integrados para desenvolvimento, teste e deploy de aplicações de IA generativa, oferecendo infraestrutura, ferramentas e serviços especializados.",
+          topics: [
+            {
+              title: "Hugging Face",
+              content:
+                "Plataforma líder para modelos de IA open source, oferecendo hub de modelos, datasets, espaços de demonstração e ferramentas de desenvolvimento. Inclui Transformers, Diffusers e Accelerate para treinamento e inferência. Custo: gratuito com limites, planos pagos para uso empresarial. Ideal para: experimentação, pesquisa, desenvolvimento de modelos customizados e deploy de aplicações.",
+              subtopics: [
+                {
+                  title: "Vantagens",
+                  content:
+                    "Maior repositório de modelos open source, ferramentas especializadas (Transformers, Diffusers), espaços de demonstração, comunidade ativa, integração com frameworks populares, gratuito para uso básico.",
+                  isPositive: true,
+                },
+                {
+                  title: "Limitações",
+                  content:
+                    "Limitações de uso gratuito, latência em modelos grandes, menos recursos que plataformas empresariais, dependência da comunidade para suporte.",
+                  isPositive: false,
+                },
+              ],
+            },
+            {
+              title: "Replicate",
+              content:
+                "Plataforma especializada em deploy e execução de modelos de IA open source. Permite rodar modelos complexos via API sem configuração de infraestrutura. Suporte a modelos de imagem, texto, áudio e vídeo. Custo: por uso (pay-per-prediction). Ideal para: prototipagem rápida, aplicações que precisam de modelos específicos, startups e projetos que não querem gerenciar infraestrutura.",
+              subtopics: [
+                {
+                  title: "Vantagens",
+                  content:
+                    "Deploy instantâneo de modelos, sem configuração de infraestrutura, pay-per-use, suporte a modelos complexos, APIs simples, integração fácil.",
+                  isPositive: true,
+                },
+                {
+                  title: "Limitações",
+                  content:
+                    "Custo pode ser alto para uso intensivo, menos controle sobre infraestrutura, dependência da plataforma, latência cold start.",
+                  isPositive: false,
+                },
+              ],
+            },
+            {
+              title: "Vercel AI SDK",
+              content:
+                "SDK especializado para desenvolvimento de aplicações web com IA no ecossistema Vercel. Oferece componentes React, hooks e utilitários para integração com LLMs, streaming de respostas e gerenciamento de estado. Integração nativa com Vercel Edge Functions e Serverless. Custo: incluído no Vercel. Ideal para: desenvolvedores web que querem adicionar IA a aplicações React/Next.js.",
+              subtopics: [
+                {
+                  title: "Vantagens",
+                  content:
+                    "Integração nativa com Vercel, componentes React prontos, streaming de respostas, hooks especializados, deploy automático, gratuito para uso básico.",
+                  isPositive: true,
+                },
+                {
+                  title: "Limitações",
+                  content:
+                    "Limitado ao ecossistema Vercel, menos flexibilidade para outros frameworks, dependência da infraestrutura Vercel.",
+                  isPositive: false,
+                },
+              ],
+            },
+            {
+              title: "Google Colab",
+              content:
+                "Ambiente de notebooks Jupyter na nuvem com acesso gratuito a GPUs e TPUs. Integração nativa com Google Drive e serviços Google. Suporte a bibliotecas populares de ML/IA. Custo: gratuito com limites, planos Pro para recursos premium. Ideal para: experimentação, educação, prototipagem, colaboração em projetos de IA.",
+              subtopics: [
+                {
+                  title: "Vantagens",
+                  content:
+                    "Acesso gratuito a GPUs/TPUs, integração com Google Drive, colaboração em tempo real, bibliotecas pré-instaladas, ideal para educação e experimentação.",
+                  isPositive: true,
+                },
+                {
+                  title: "Limitações",
+                  content:
+                    "Limitações de uso gratuito, sessões desconectam automaticamente, menos recursos que infraestrutura dedicada, dependência da internet.",
+                  isPositive: false,
+                },
+              ],
+            },
+            {
+              title: "Databricks",
+              content:
+                "Plataforma unificada de dados e IA para empresas, oferecendo notebooks colaborativos, MLflow para experimentação, e infraestrutura escalável. Suporte a múltiplas linguagens (Python, R, SQL, Scala). Custo: $0.40-0.55 por DBU. Ideal para: empresas que precisam de ML em escala, equipes de dados, projetos que requerem governança e colaboração.",
+              subtopics: [
+                {
+                  title: "Vantagens",
+                  content:
+                    "Plataforma unificada de dados e ML, MLflow para experimentação, colaboração empresarial, governança robusta, escalabilidade, suporte empresarial.",
+                  isPositive: true,
+                },
+                {
+                  title: "Limitações",
+                  content:
+                    "Custo alto, complexidade para projetos simples, curva de aprendizado, dependência da plataforma.",
+                  isPositive: false,
+                },
+              ],
+            },
+            {
+              title: "AWS SageMaker",
+              content:
+                "Serviço gerenciado da Amazon para desenvolvimento e deploy de modelos de ML. Oferece notebooks, experimentação, treinamento distribuído e endpoints para inferência. Integração nativa com ecossistema AWS. Custo: por uso (instâncias, armazenamento, transferência). Ideal para: empresas que já usam AWS, projetos que precisam de escalabilidade e integração com serviços AWS.",
+              subtopics: [
+                {
+                  title: "Vantagens",
+                  content:
+                    "Integração nativa com AWS, escalabilidade automática, ferramentas de experimentação, endpoints gerenciados, suporte empresarial robusto.",
+                  isPositive: true,
+                },
+                {
+                  title: "Limitações",
+                  content:
+                    "Custo pode ser alto, dependência do ecossistema AWS, complexidade para iniciantes, vendor lock-in.",
+                  isPositive: false,
+                },
+              ],
+            },
+            {
+              title: "Azure Machine Learning",
+              content:
+                "Serviço de ML da Microsoft com notebooks, experimentação, AutoML e endpoints gerenciados. Integração com Azure DevOps e outros serviços Microsoft. Suporte a frameworks populares e modelos customizados. Custo: por uso (computação, armazenamento). Ideal para: empresas que usam ecossistema Microsoft, projetos que precisam de integração com Azure.",
+              subtopics: [
+                {
+                  title: "Vantagens",
+                  content:
+                    "Integração com ecossistema Microsoft, AutoML, governança empresarial, suporte a múltiplos frameworks, endpoints gerenciados.",
+                  isPositive: true,
+                },
+                {
+                  title: "Limitações",
+                  content:
+                    "Dependência do ecossistema Azure, custo para uso intensivo, complexidade inicial, vendor lock-in.",
+                  isPositive: false,
+                },
+              ],
+            },
+          ],
+          bullets: [
+            "Hugging Face: maior hub de modelos open source, ferramentas especializadas",
+            "Replicate: deploy instantâneo, pay-per-use, sem configuração de infraestrutura",
+            "Vercel AI SDK: componentes React prontos, integração nativa com Vercel",
+            "Google Colab: acesso gratuito a GPUs/TPUs, ideal para experimentação",
+            "Databricks: plataforma unificada para ML empresarial em escala",
+            "AWS SageMaker: integração nativa com AWS, escalabilidade automática",
+            "Azure ML: ecossistema Microsoft, AutoML, governança empresarial",
+          ],
+        },
+               {
+          title: "Como Escolher e Implementar",
+          description:
+            "Estratégias práticas e metodologias comprovadas para selecionar as ferramentas certas e implementá-las com sucesso em seus projetos, desde avaliação inicial até governança contínua.",
+          topics: [
+            {
+              title: "Avaliação de necessidades e contexto",
+              content:
+                "Comece definindo claramente o problema a ser resolvido, público-alvo, requisitos de qualidade, orçamento e timeline. Considere também requisitos de compliance, segurança e integração com sistemas existentes. Avalie a maturidade da organização em relação à IA e a disponibilidade de recursos técnicos.",
+              subtopics: [
+                {
+                  title: "Análise do problema",
+                  content:
+                    "Identifique o valor de negócio específico, métricas de sucesso, restrições técnicas e requisitos regulatórios. Documente casos de uso detalhados e cenários de falha.",
+                  isPositive: true,
+                },
+                {
+                  title: "Avaliação de maturidade",
+                  content:
+                    "Considere a experiência da equipe com IA, infraestrutura existente, processos de governança e cultura de inovação da organização.",
+                  isPositive: true,
+                },
+              ],
+            },
+            {
+              title: "Prova de conceito estruturada",
+              content:
+                "Desenvolva um processo sistemático para testar 2-3 ferramentas candidatas com casos de uso reais. Crie critérios de avaliação padronizados, cronogramas de teste e métricas de comparação. Documente resultados, feedback dos usuários e lições aprendidas para informar decisões futuras.",
+              subtopics: [
+                {
+                  title: "Critérios de avaliação",
+                  content:
+                    "Qualidade da saída, facilidade de uso, custo por transação, tempo de implementação, suporte e documentação, integração com sistemas existentes, escalabilidade e segurança.",
+                  isPositive: true,
+                },
+                {
+                  title: "Metodologia de teste",
+                  content:
+                    "Teste com dados reais, cenários de uso típicos, carga esperada e casos extremos. Inclua feedback de usuários finais e stakeholders técnicos.",
+                  isPositive: true,
+                },
+              ],
+            },
+            {
+              title: "Implementação gradual e iterativa",
+              content:
+                "Adote uma abordagem incremental, começando com casos de uso simples e de alto valor. Monitore métricas de qualidade, custo, adoção e impacto no negócio. Use feedback contínuo para ajustar a estratégia e expandir gradualmente para casos mais complexos conforme ganha experiência e confiança.",
+              subtopics: [
+                {
+                  title: "Fases de implementação",
+                  content:
+                    "Fase 1: Piloto com usuários internos; Fase 2: Expansão para casos de uso adicionais; Fase 3: Integração com sistemas de produção; Fase 4: Otimização e escala.",
+                  isPositive: true,
+                },
+                {
+                  title: "Métricas de sucesso",
+                  content:
+                    "Taxa de adoção, tempo de resolução, qualidade da saída, ROI, satisfação do usuário, redução de custos operacionais.",
+                  isPositive: true,
+                },
+              ],
+            },
+            {
+              title: "Governança e monitoramento contínuo",
+              content:
+                "Estabeleça políticas de uso, limites de custo, monitoramento de qualidade e procedimentos de revisão. Implemente controles de acesso, auditoria de uso e políticas de retenção de dados. Mantenha documentação atualizada, treine a equipe regularmente e revise políticas conforme a tecnologia evolui.",
+              subtopics: [
+                {
+                  title: "Políticas essenciais",
+                  content:
+                    "Política de uso responsável, limites de custo por usuário/departamento, procedimentos de aprovação para novos casos de uso, políticas de segurança de dados e conformidade regulatória.",
+                  isPositive: true,
+                },
+                {
+                  title: "Monitoramento e alertas",
+                  content:
+                    "Dashboards de uso e custo, alertas para gastos excessivos, monitoramento de qualidade da saída, detecção de uso inadequado e relatórios de compliance.",
+                  isPositive: true,
+                },
+              ],
+            },
+            {
+              title: "Estratégia de adoção por categoria",
+              content:
+                "Desenvolva estratégias específicas para cada categoria de ferramenta, considerando suas características únicas, casos de uso ideais e requisitos de implementação.",
+              subtopics: [
+                {
+                  title: "LLMs e assistentes",
+                  content:
+                    "Comece com ChatGPT/Gemini para tarefas gerais, avalie Claude para análise de documentos, considere modelos open source para casos com requisitos de privacidade específicos.",
+                  isPositive: true,
+                },
+                {
+                  title: "Desenvolvimento e produtividade",
+                  content:
+                    "GitHub Copilot para desenvolvimento geral, Cursor para projetos com foco em IA, CodeWhisperer para ecossistema AWS, Tabnine para requisitos de privacidade.",
+                  isPositive: true,
+                },
+                {
+                  title: "Automação e workflows",
+                  content:
+                    "Zapier para integrações simples, Make para lógicas complexas, n8n para controle total, Power Automate para ecossistema Microsoft.",
+                  isPositive: true,
+                },
+                {
+                  title: "Design e criatividade",
+                  content:
+                    "Canva AI para marketing básico, Midjourney para arte conceitual, DALL-E para precisão de prompt, Adobe Firefly para uso comercial seguro.",
+                  isPositive: true,
+                },
+              ],
+            },
+            {
+              title: "Quick wins por setor e função",
+              content:
+                "Identifique oportunidades de valor rápido baseadas no setor e função específica da organização, priorizando casos de uso com alto impacto e baixa complexidade.",
+              subtopics: [
+                {
+                  title: "Marketing e vendas",
+                  content:
+                    "Geração de copy com ChatGPT/Gemini, personalização de e-mails com Zapier, criação de imagens com Canva AI, análise de sentimento com ferramentas de IA.",
+                  isPositive: true,
+                },
+                {
+                  title: "Desenvolvimento e TI",
+                  content:
+                    "GitHub Copilot para aceleração de código, Cursor para debugging, automação de testes com IA, documentação automática com LLMs.",
+                  isPositive: true,
+                },
+                {
+                  title: "Operações e atendimento",
+                  content:
+                    "Chatbots com RAG para FAQ, agent assist para operadores, sumarização de tickets, automação de workflows com n8n/Zapier.",
+                  isPositive: true,
+                },
+                {
+                  title: "Análise e relatórios",
+                  content:
+                    "NL2SQL para consultas em linguagem natural, geração de relatórios com LLMs, análise de dados com ferramentas de IA, dashboards inteligentes.",
+                  isPositive: true,
+                },
+              ],
+            },
+            {
+              title: "Gestão de riscos e compliance",
+              content:
+                "Identifique e mitigue riscos específicos de cada ferramenta, incluindo vazamento de dados, custos inesperados, dependência de fornecedores e questões de compliance regulatório.",
+              subtopics: [
+                {
+                  title: "Riscos principais",
+                  content:
+                    "Vazamento de dados sensíveis, custos escalonados rapidamente, dependência de APIs externas, alucinações em LLMs, questões de licenciamento e propriedade intelectual.",
+                  isPositive: false,
+                },
+                {
+                  title: "Estratégias de mitigação",
+                  content:
+                    "Políticas de dados claras, limites de custo automáticos, redundância de fornecedores, validação de saídas críticas, revisão legal de contratos e termos de uso.",
+                  isPositive: true,
+                },
+              ],
+            },
+            {
+              title: "Roadmap de evolução",
+              content:
+                "Desenvolva um plano de evolução de 12-18 meses, considerando o desenvolvimento da tecnologia, mudanças nas necessidades do negócio e aprendizado contínuo da equipe.",
+              subtopics: [
+                {
+                  title: "Curto prazo (0-6 meses)",
+                  content:
+                    "Implementação de quick wins, treinamento da equipe, estabelecimento de políticas básicas, monitoramento inicial de custos e qualidade.",
+                  isPositive: true,
+                },
+                {
+                  title: "Médio prazo (6-12 meses)",
+                  content:
+                    "Expansão para casos de uso mais complexos, integração com sistemas existentes, otimização de custos, desenvolvimento de competências internas.",
+                  isPositive: true,
+                },
+                {
+                  title: "Longo prazo (12+ meses)",
+                  content:
+                    "Arquitetura de IA madura, automação avançada, inovação contínua, liderança de mercado em uso responsável de IA.",
+                  isPositive: true,
+                },
+              ],
+            },
+          ],
+          bullets: [
+            "Avalie necessidades, maturidade e contexto organizacional",
+            "Teste sistematicamente com critérios padronizados",
+            "Implemente incrementalmente com monitoramento contínuo",
+            "Estabeleça governança robusta e políticas claras",
+            "Desenvolva estratégias específicas por categoria",
+            "Identifique quick wins por setor e função",
+            "Mitigue riscos e garanta compliance",
+            "Planeje evolução de longo prazo",
+          ],
+        },
+     ],
+   },
+ ];
