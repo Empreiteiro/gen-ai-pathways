@@ -2189,7 +2189,7 @@ export const courses: Course[] = [
      id: "rag",
      title: "RAG - Retrieval-Augmented Generation",
      description: "Aprenda a combinar recuperação de informações com IA generativa para criar sistemas de perguntas e respostas precisos e atualizados.",
-     image: ragImg,
+     image: avancadoImg,
      imageAlt: "Ilustração conceitual de RAG - sistema conectando base de dados a IA generativa",
      icon: "Database",
      slides: [
@@ -2461,7 +2461,7 @@ response = qa_chain.run("Qual é o resumo do documento?")`,
       id: "mcp",
       title: "MCP - Model Context Protocol",
       description: "Aprenda o protocolo padrão para conectar assistentes de IA com fontes de dados e ferramentas externas de forma segura e eficiente.",
-      image: mcpImg,
+      image: avancadoImg,
       imageAlt: "Ilustração conceitual do MCP conectando IA com múltiplas fontes de dados",
       icon: "Network",
       slides: [
