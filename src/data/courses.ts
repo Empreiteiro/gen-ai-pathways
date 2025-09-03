@@ -2,6 +2,7 @@ import avancadoImg from "@/assets/course-avancado.jpg";
 import ragImg from "@/assets/course-rag.jpg";
 import mcpImg from "@/assets/course-mcp.jpg";
 import lovableImg from "@/assets/course-lovable.jpg";
+import ragVsMcpImg from "@/assets/course-rag-vs-mcp.jpg";
 
 export type SlideTopic = {
   title?: string;
@@ -36,7 +37,7 @@ export type Slide = {
 };
 
 export type Course = {
-  id: "introducao" | "avancado" | "ferramentas" | "rag" | "mcp" | "lovable";
+  id: "introducao" | "avancado" | "ferramentas" | "rag" | "mcp" | "lovable" | "rag-vs-mcp";
   title: string;
   description: string;
   image: string;
@@ -3184,6 +3185,421 @@ Install Command: npm install
             "Configure CI/CD para deploy automático via GitHub",
             "Gerencie environment variables na plataforma de hosting",
             "Domínio customizado disponível em qualquer hosting independente",
+          ],
+        },
+      ],
+    },
+    {
+      id: "rag-vs-mcp",
+      title: "RAG vs MCP - Quando Usar Cada Técnica",
+      description: "Compare RAG e MCP, entenda os cenários ideais de cada abordagem e aprenda como combiná-las para criar sistemas de IA mais poderosos.",
+      image: avancadoImg,
+      imageAlt: "Comparação visual entre arquiteturas RAG e MCP",
+      icon: "GitCompare",
+      slides: [
+        {
+          title: "RAG vs MCP - Visão Geral",
+          description: "Entenda as diferenças fundamentais entre RAG e MCP e quando cada abordagem é mais adequada.",
+          topics: [
+            {
+              title: "RAG - Retrieval-Augmented Generation",
+              content: "RAG foca na recuperação de informações textuais de uma base de conhecimento para enriquecer as respostas do LLM. É ideal para sistemas de Q&A baseados em documentos e conhecimento estruturado.",
+              subtopics: [
+                {
+                  title: "Foco principal",
+                  content: "Busca semântica em documentos e conhecimento estático para gerar respostas contextualizadas",
+                },
+                {
+                  title: "Tipo de dados",
+                  content: "Principalmente texto: documentos, manuais, artigos, FAQs, bases de conhecimento",
+                },
+                {
+                  title: "Interação",
+                  content: "Passiva - apenas recupera e apresenta informações existentes",
+                },
+              ],
+            },
+            {
+              title: "MCP - Model Context Protocol",
+              content: "MCP permite que LLMs se conectem e interajam com ferramentas, APIs e sistemas externos em tempo real. É ideal para automação e execução de ações.",
+              subtopics: [
+                {
+                  title: "Foco principal",
+                  content: "Integração com sistemas externos e execução de ações/ferramentas em tempo real",
+                },
+                {
+                  title: "Tipo de recursos",
+                  content: "Ferramentas, APIs, bancos de dados, sistemas de arquivos, serviços web",
+                },
+                {
+                  title: "Interação",
+                  content: "Ativa - executa ações, modifica sistemas, interage com APIs",
+                },
+              ],
+            },
+            {
+              title: "Diferenças chave",
+              content: "RAG = 'Conhecimento' | MCP = 'Ação'. RAG busca informações passivas, MCP executa operações ativas.",
+            },
+          ],
+          bullets: [
+            "RAG: busca em documentos → conhecimento para respostas",
+            "MCP: conexão com ferramentas → ações e integrações",
+            "RAG = passivo (leitura), MCP = ativo (execução)",
+            "Ambos enriquecem LLMs com capacidades externas",
+          ],
+        },
+        {
+          title: "Cenários Ideais para RAG",
+          description: "Quando RAG é a melhor escolha e exemplos práticos de implementação.",
+          topics: [
+            {
+              title: "Casos de uso perfeitos para RAG",
+              content: "RAG brilha em cenários onde você precisa acessar grande volume de conhecimento textual para gerar respostas precisas e fundamentadas.",
+              subtopics: [
+                {
+                  title: "Sistemas de FAQ/Suporte",
+                  content: "Base de conhecimento empresarial, manuais técnicos, políticas internas",
+                },
+                {
+                  title: "Pesquisa e análise",
+                  content: "Literatura científica, relatórios, documentação técnica, jurídica",
+                },
+                {
+                  title: "Assistentes educacionais",
+                  content: "Cursos, tutoriais, materiais didáticos, conteúdo acadêmico",
+                },
+                {
+                  title: "Compliance e regulamentação",
+                  content: "Normas, leis, procedimentos onde precisão factual é crítica",
+                },
+              ],
+            },
+            {
+              title: "Vantagens do RAG",
+              content: "Por que escolher RAG para esses cenários específicos.",
+              subtopics: [
+                {
+                  title: "Controle de conhecimento",
+                  content: "Você controla exatamente quais documentos/fontes o modelo pode acessar",
+                },
+                {
+                  title: "Atualização fácil",
+                  content: "Adicione/remova documentos sem retreinar o modelo",
+                },
+                {
+                  title: "Rastreabilidade",
+                  content: "Sempre pode mostrar as fontes exatas das informações",
+                },
+                {
+                  title: "Especialização de domínio",
+                  content: "Foca no conhecimento específico da sua área/empresa",
+                },
+              ],
+            },
+            {
+              title: "Exemplo prático: Suporte técnico",
+              content: "Sistema RAG para suporte de software empresarial.",
+              code: `# Documentos no RAG:
+- Manual do usuário (500 páginas)
+- FAQ comum (200 perguntas)  
+- Troubleshooting guides
+- Release notes e changelog
+- Políticas de suporte
+
+# Query: "Como resolver erro de login?"
+# RAG busca → encontra seções relevantes
+# LLM gera → resposta baseada nos manuais
+# Resultado → solução precisa + fontes`,
+            },
+          ],
+          bullets: [
+            "Ideal para: FAQ, pesquisa, educação, compliance",
+            "Controle total sobre conhecimento e fontes",
+            "Atualização simples via adição/remoção de documentos",
+            "Rastreabilidade completa das informações utilizadas",
+          ],
+        },
+        {
+          title: "Cenários Ideais para MCP",
+          description: "Quando MCP é a melhor escolha e exemplos práticos de implementação.",
+          topics: [
+            {
+              title: "Casos de uso perfeitos para MCP",
+              content: "MCP é ideal quando você precisa que o LLM execute ações, interaja com sistemas ou acesse dados em tempo real.",
+              subtopics: [
+                {
+                  title: "Automação de tarefas",
+                  content: "Envio de emails, criação de tickets, agendamento, operações de arquivo",
+                },
+                {
+                  title: "Integração com sistemas",
+                  content: "CRM, ERP, bancos de dados, APIs internas, ferramentas corporativas",
+                },
+                {
+                  title: "Desenvolvimento assistido",
+                  content: "Git operations, deploy, testing, code analysis, database queries",
+                },
+                {
+                  title: "Monitoramento e análise",
+                  content: "Logs em tempo real, métricas, dashboards, alertas",
+                },
+              ],
+            },
+            {
+              title: "Vantagens do MCP",
+              content: "Por que escolher MCP para esses cenários específicos.",
+              subtopics: [
+                {
+                  title: "Dados em tempo real",
+                  content: "Acessa informações sempre atualizadas diretamente das fontes",
+                },
+                {
+                  title: "Execução de ações",
+                  content: "Não apenas informa, mas executa operações concretas",
+                },
+                {
+                  title: "Integração padronizada",
+                  content: "Protocolo único para conectar com diversos sistemas",
+                },
+                {
+                  title: "Flexibilidade",
+                  content: "Pode acessar qualquer API ou ferramenta que implemente MCP",
+                },
+              ],
+            },
+            {
+              title: "Exemplo prático: Assistente DevOps",
+              content: "Sistema MCP para automação de desenvolvimento e operações.",
+              code: `# Servidores MCP conectados:
+- Git (repositórios, branches, commits)
+- PostgreSQL (queries, schemas)  
+- Slack (notificações, canais)
+- GitHub (issues, PRs, deployments)
+- Sistema de logs (monitoramento)
+
+# Query: "Crie uma branch para bug #123 e notifique o time"
+# MCP executa → git checkout -b fix-123
+# MCP executa → slack notification
+# Resultado → ação concreta realizada`,
+            },
+          ],
+          bullets: [
+            "Ideal para: automação, integrações, desenvolvimento, monitoramento",
+            "Dados em tempo real diretamente das fontes",
+            "Executa ações reais, não apenas informa",
+            "Protocolo padronizado para qualquer ferramenta/API",
+          ],
+        },
+        {
+          title: "Comparação Técnica Detalhada",
+          description: "Análise técnica das diferenças de arquitetura, performance e complexidade entre RAG e MCP.",
+          topics: [
+            {
+              title: "Arquitetura e Componentes",
+              content: "Como cada sistema é estruturado e seus componentes principais.",
+              subtopics: [
+                {
+                  title: "RAG Architecture",
+                  content: "Indexador → Vector DB → Retriever → LLM Generator (pipeline linear)",
+                },
+                {
+                  title: "MCP Architecture", 
+                  content: "Cliente MCP ↔ Servidores MCP → Recursos/Tools (arquitetura distribuída)",
+                },
+                {
+                  title: "Complexidade",
+                  content: "RAG: média (embedding, chunking). MCP: variável (depende das integrações)",
+                },
+              ],
+            },
+            {
+              title: "Performance e Escalabilidade",
+              content: "Características de performance de cada abordagem.",
+              subtopics: [
+                {
+                  title: "RAG Performance",
+                  content: "Busca vetorial: 50-200ms. Limitado por tamanho do índice e qualidade do chunking",
+                },
+                {
+                  title: "MCP Performance",
+                  content: "Variável por ferramenta: API calls 100ms-5s. Limitado pela ferramenta mais lenta",
+                },
+                {
+                  title: "Escalabilidade",
+                  content: "RAG: escala com vector DB. MCP: escala com número de integrações",
+                },
+              ],
+            },
+            {
+              title: "Custos e Manutenção",
+              content: "Considerações econômicas e de manutenção de cada sistema.",
+              subtopics: [
+                {
+                  title: "RAG Costs",
+                  content: "Vector DB hosting + embedding generation + LLM calls. Custos previsíveis",
+                },
+                {
+                  title: "MCP Costs",
+                  content: "LLM calls + API costs das ferramentas integradas. Custos variáveis",
+                },
+                {
+                  title: "Manutenção",
+                  content: "RAG: atualização de documentos. MCP: manutenção de múltiplas integrações",
+                },
+              ],
+            },
+          ],
+          bullets: [
+            "RAG: pipeline linear, performance previsível, custos controlados",
+            "MCP: arquitetura distribuída, performance variável, custos por uso",
+            "RAG escala com dados, MCP escala com integrações",
+            "Complexidade: RAG é consistente, MCP varia por ferramenta",
+          ],
+        },
+        {
+          title: "Combinando RAG e MCP - O Melhor dos Dois Mundos",
+          description: "Como usar RAG e MCP juntos para criar sistemas de IA mais completos e poderosos.",
+          topics: [
+            {
+              title: "Por que combinar RAG + MCP",
+              content: "A combinação oferece tanto conhecimento contextual quanto capacidade de ação, criando assistentes verdadeiramente úteis.",
+              subtopics: [
+                {
+                  title: "Complementaridade",
+                  content: "RAG fornece contexto/conhecimento, MCP fornece capacidade de ação",
+                },
+                {
+                  title: "Fluxo natural",
+                  content: "Buscar informação (RAG) → Decidir ação (LLM) → Executar (MCP)",
+                },
+                {
+                  title: "Casos complexos",
+                  content: "Problemas que requerem tanto conhecimento quanto execução",
+                },
+              ],
+            },
+            {
+              title: "Arquiteturas híbridas",
+              content: "Padrões comuns para integrar RAG e MCP efetivamente.",
+              subtopics: [
+                {
+                  title: "Sequential (RAG → MCP)",
+                  content: "Primeiro busca conhecimento, depois executa ação baseada no que encontrou",
+                },
+                {
+                  title: "Parallel (RAG + MCP)",
+                  content: "Acessa conhecimento e dados em tempo real simultaneamente",
+                },
+                {
+                  title: "Conditional",
+                  content: "Decide dinamicamente se precisa de RAG, MCP ou ambos baseado na query",
+                },
+              ],
+            },
+            {
+              title: "Exemplo prático: Assistente de suporte avançado",
+              content: "Sistema que combina base de conhecimento com ações automatizadas.",
+              code: `# Cenário: "Cliente reporta bug no login"
+
+# 1. RAG Phase
+→ Busca em knowledge base sobre problemas de login
+→ Encontra procedimentos padrão e soluções conhecidas
+
+# 2. Decision Phase  
+→ LLM analisa: é problema conhecido ou precisa investigar?
+
+# 3. MCP Phase (se necessário)
+→ Consulta logs do cliente via API
+→ Verifica status do serviço
+→ Cria ticket automaticamente
+→ Notifica equipe técnica
+
+# Resultado: Resposta informada + ações executadas`,
+            },
+          ],
+          bullets: [
+            "RAG + MCP = Conhecimento + Ação = Assistente completo",
+            "Padrões: Sequential, Parallel, Conditional",
+            "Use RAG para contexto, MCP para execução",
+            "Ideal para suporte, automação e sistemas complexos",
+          ],
+        },
+        {
+          title: "Guia de Decisão - Quando Usar Cada Abordagem",
+          description: "Framework prático para decidir entre RAG, MCP ou ambos baseado no seu caso de uso.",
+          topics: [
+            {
+              title: "Árvore de decisão",
+              content: "Processo estruturado para escolher a abordagem correta.",
+              subtopics: [
+                {
+                  title: "1. Pergunta principal",
+                  content: "O sistema precisa APENAS informar ou também EXECUTAR ações?",
+                },
+                {
+                  title: "2. Se apenas informar",
+                  content: "As informações estão em documentos/conhecimento estruturado? → RAG",
+                },
+                {
+                  title: "3. Se executar ações",
+                  content: "Precisa integrar com sistemas/APIs externos? → MCP",
+                },
+                {
+                  title: "4. Se ambos",
+                  content: "Precisa de conhecimento E ação? → RAG + MCP",
+                },
+              ],
+            },
+            {
+              title: "Matriz de casos de uso",
+              content: "Guia rápido para cenários comuns.",
+              code: `APENAS INFORMAÇÃO (RAG):
+✓ FAQ empresarial
+✓ Pesquisa em documentos  
+✓ Assistente educacional
+✓ Compliance/regulamentação
+
+APENAS AÇÃO (MCP):
+✓ Automação de tarefas
+✓ Integração com APIs
+✓ Operações de sistema
+✓ Monitoramento em tempo real
+
+INFORMAÇÃO + AÇÃO (RAG + MCP):
+✓ Suporte técnico avançado
+✓ Assistente DevOps
+✓ Consultoria automatizada  
+✓ Análise e ação sobre dados`,
+            },
+            {
+              title: "Fatores de decisão",
+              content: "Critérios adicionais a considerar na escolha da arquitetura.",
+              subtopics: [
+                {
+                  title: "Orçamento",
+                  content: "RAG tem custos mais previsíveis, MCP varia com integrações",
+                },
+                {
+                  title: "Equipe técnica",
+                  content: "RAG é mais simples, MCP requer conhecimento de APIs/integrações",
+                },
+                {
+                  title: "Tempo de implementação",
+                  content: "RAG é mais rápido para MVP, MCP pode ser complexo inicialmente",
+                },
+                {
+                  title: "Requisitos de segurança",
+                  content: "RAG controla dados, MCP precisa gerenciar múltiplas permissões",
+                },
+              ],
+            },
+          ],
+          bullets: [
+            "Decisão principal: só informar (RAG) ou também agir (MCP)?",
+            "RAG para conhecimento, MCP para automação, ambos para casos complexos",
+            "Considere orçamento, equipe, tempo e segurança",
+            "Comece simples e evolua conforme necessidade",
           ],
         },
       ],
