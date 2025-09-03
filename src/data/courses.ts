@@ -1,5 +1,6 @@
 import avancadoImg from "@/assets/course-avancado.jpg";
 import ragImg from "@/assets/course-rag.jpg";
+import mcpImg from "@/assets/course-mcp.jpg";
 
 export type SlideTopic = {
   title?: string;
@@ -34,7 +35,7 @@ export type Slide = {
 };
 
 export type Course = {
-  id: "introducao" | "avancado" | "ferramentas" | "rag";
+  id: "introducao" | "avancado" | "ferramentas" | "rag" | "mcp";
   title: string;
   description: string;
   image: string;
@@ -2453,7 +2454,331 @@ response = qa_chain.run("Qual é o resumo do documento?")`,
            "Hybrid search combina semântica + palavra-chave",
            "Fine-tuning para domínios específicos quando viável",
          ],
-       },
-     ],
-   },
- ];
+        },
+      ],
+    },
+    {
+      id: "mcp",
+      title: "MCP - Model Context Protocol",
+      description: "Aprenda o protocolo padrão para conectar assistentes de IA com fontes de dados e ferramentas externas de forma segura e eficiente.",
+      image: mcpImg,
+      imageAlt: "Ilustração conceitual do MCP conectando IA com múltiplas fontes de dados",
+      icon: "Network",
+      slides: [
+        {
+          title: "O que é o Model Context Protocol (MCP)",
+          description: "Entenda o protocolo padrão da Anthropic para conectar assistentes de IA com diversas fontes de dados e ferramentas.",
+          topics: [
+            {
+              title: "Definição do MCP",
+              content: "O Model Context Protocol (MCP) é um protocolo aberto desenvolvido pela Anthropic que define uma interface padronizada para assistentes de IA se conectarem com fontes de dados externas, ferramentas e serviços. Permite que LLMs acessem informações em tempo real de forma segura e controlada.",
+            },
+            {
+              title: "Problema que resolve",
+              content: "Assistentes de IA tradicionalmente têm conhecimento limitado e desatualizado. MCP resolve isso permitindo acesso controlado a dados atuais: bancos de dados, APIs, sistemas de arquivos, ferramentas empresariais e mais.",
+              subtopics: [
+                {
+                  title: "Limitações tradicionais",
+                  content: "Conhecimento estático, dados desatualizados, incapacidade de acessar sistemas específicos da empresa.",
+                },
+                {
+                  title: "Benefícios do MCP",
+                  content: "Acesso a dados em tempo real, integração padronizada, controle de permissões, extensibilidade.",
+                },
+              ],
+            },
+            {
+              title: "Arquitetura básica",
+              content: "MCP define uma arquitetura cliente-servidor onde o assistente de IA (cliente) se conecta a servidores MCP que fornecem acesso a recursos específicos. O protocolo garante comunicação segura e padronizada.",
+            },
+          ],
+          bullets: [
+            "Protocolo aberto da Anthropic para conectar IA com dados externos",
+            "Resolve limitações de conhecimento desatualizado dos LLMs",
+            "Arquitetura cliente-servidor com interface padronizada",
+            "Permite acesso controlado e em tempo real a diversos recursos",
+          ],
+        },
+        {
+          title: "Arquitetura e Componentes do MCP",
+          description: "Conheça os componentes fundamentais do protocolo MCP e como eles interagem.",
+          topics: [
+            {
+              title: "Componentes principais",
+              content: "O MCP é composto por três elementos principais que trabalham juntos para fornecer acesso seguro e padronizado aos recursos.",
+              subtopics: [
+                {
+                  title: "Cliente MCP",
+                  content: "O assistente de IA (como Claude Desktop) que consome dados e ferramentas através do protocolo MCP.",
+                },
+                {
+                  title: "Servidor MCP",
+                  content: "Aplicação que expõe recursos específicos (dados, ferramentas, prompts) seguindo o protocolo MCP.",
+                },
+                {
+                  title: "Protocolo de comunicação",
+                  content: "Define como cliente e servidor trocam mensagens, autenticam e gerenciam sessões de forma segura.",
+                },
+              ],
+            },
+            {
+              title: "Tipos de recursos",
+              content: "O MCP permite acesso a três tipos principais de recursos, cada um com suas características específicas.",
+              subtopics: [
+                {
+                  title: "Resources (Recursos)",
+                  content: "Dados estruturados ou não estruturados: arquivos, dados de banco, conteúdo web, documentos.",
+                },
+                {
+                  title: "Tools (Ferramentas)",
+                  content: "Funcionalidades executáveis: APIs REST, comandos do sistema, operações de banco de dados.",
+                },
+                {
+                  title: "Prompts",
+                  content: "Templates de prompts reutilizáveis com variáveis, otimizados para tarefas específicas.",
+                },
+              ],
+            },
+          ],
+          bullets: [
+            "Cliente MCP: assistente de IA que consome recursos",
+            "Servidor MCP: expõe dados, ferramentas e prompts",
+            "Protocolo seguro define comunicação padronizada",
+            "Três tipos: Resources, Tools e Prompts",
+          ],
+        },
+        {
+          title: "Servidores MCP Disponíveis",
+          description: "Explore servidores MCP prontos para uso e suas funcionalidades.",
+          topics: [
+            {
+              title: "Servidores oficiais",
+              content: "A Anthropic e comunidade mantêm diversos servidores MCP para casos de uso comuns.",
+              subtopics: [
+                {
+                  title: "Filesystem",
+                  content: "Acesso controlado ao sistema de arquivos local para leitura e escrita de documentos.",
+                },
+                {
+                  title: "Git",
+                  content: "Integração com repositórios Git para leitura de código, histórico e operações básicas.",
+                },
+                {
+                  title: "SQLite/PostgreSQL",
+                  content: "Conexão com bancos de dados para queries e operações CRUD controladas.",
+                },
+                {
+                  title: "Web search",
+                  content: "Busca na web através de APIs como Brave Search ou Google Custom Search.",
+                },
+              ],
+            },
+            {
+              title: "Servidores empresariais",
+              content: "Integrações com ferramentas empresariais populares para acesso a dados corporativos.",
+              subtopics: [
+                {
+                  title: "Google Workspace",
+                  content: "Acesso a Gmail, Google Drive, Calendar e outras ferramentas do Google.",
+                },
+                {
+                  title: "Slack",
+                  content: "Leitura de mensagens, envio de notificações e integração com workspaces.",
+                },
+                {
+                  title: "GitHub",
+                  content: "Acesso a repositórios, issues, pull requests e operações de desenvolvimento.",
+                },
+                {
+                  title: "Notion",
+                  content: "Leitura e escrita em bases de conhecimento e documentação corporativa.",
+                },
+              ],
+            },
+          ],
+          bullets: [
+            "Servidores oficiais: filesystem, Git, bancos SQL, web search",
+            "Integrações empresariais: Google Workspace, Slack, GitHub",
+            "Cada servidor expõe recursos específicos de sua plataforma",
+            "Instalação simples via package managers ou Docker",
+          ],
+        },
+        {
+          title: "Configuração e Uso Prático",
+          description: "Como configurar e usar servidores MCP no Claude Desktop e outras aplicações.",
+          topics: [
+            {
+              title: "Configuração no Claude Desktop",
+              content: "O Claude Desktop suporta MCP nativamente através de arquivo de configuração JSON.",
+              code: `{
+  "mcpServers": {
+    "filesystem": {
+      "command": "npx",
+      "args": ["@modelcontextprotocol/server-filesystem", "/path/to/allowed/directory"]
+    },
+    "git": {
+      "command": "npx", 
+      "args": ["@modelcontextprotocol/server-git", "--repository", "/path/to/repo"]
+    },
+    "postgres": {
+      "command": "npx",
+      "args": ["@modelcontextprotocol/server-postgres", "postgresql://user:pass@localhost/db"]
+    }
+  }
+}`,
+            },
+            {
+              title: "Fluxo de uso típico",
+              content: "1) Instalar servidor MCP → 2) Configurar no claude_desktop_config.json → 3) Reiniciar Claude Desktop → 4) Servidor aparece disponível → 5) Fazer perguntas que requerem os dados/ferramentas.",
+            },
+            {
+              title: "Boas práticas de segurança",
+              content: "Configure permissões restritivas, use variáveis de ambiente para credentials, monitore logs de acesso e mantenha servidores atualizados.",
+              subtopics: [
+                {
+                  title: "Controle de acesso",
+                  content: "Limite diretórios/dados acessíveis, use read-only quando possível, configure timeouts.",
+                },
+                {
+                  title: "Credentials",
+                  content: "Nunca hardcode senhas, use variáveis de ambiente, rotacione chaves regularmente.",
+                },
+              ],
+            },
+          ],
+          bullets: [
+            "Configuração via claude_desktop_config.json",
+            "Instalação simples de servidores via npm/Docker",
+            "Permissões restritivas e variáveis de ambiente para segurança",
+            "Monitore logs e mantenha servidores atualizados",
+          ],
+        },
+        {
+          title: "Casos de Uso Empresariais",
+          description: "Aplicações práticas do MCP em cenários empresariais reais.",
+          topics: [
+            {
+              title: "Assistente de desenvolvimento",
+              content: "Conectar Claude com repositórios Git, bancos de dados de desenvolvimento e ferramentas DevOps para assistência em coding, debugging e documentação.",
+              subtopics: [
+                {
+                  title: "Recursos integrados",
+                  content: "Git para histórico de código, PostgreSQL para schemas, filesystem para logs e configurações.",
+                },
+                {
+                  title: "Casos de uso",
+                  content: "Review de código, debugging de queries SQL, análise de logs, geração de documentação técnica.",
+                },
+              ],
+            },
+            {
+              title: "Suporte ao cliente",
+              content: "Integrar com CRM, base de conhecimento e ferramentas de suporte para respostas mais precisas e contextualizadas.",
+              subtopics: [
+                {
+                  title: "Integrações típicas",
+                  content: "Notion/Confluence para KB, Slack para comunicação interna, bancos CRM para histórico do cliente.",
+                },
+                {
+                  title: "Benefícios",
+                  content: "Respostas baseadas em dados reais, histórico completo do cliente, procedimentos atualizados.",
+                },
+              ],
+            },
+            {
+              title: "Análise de dados",
+              content: "Conectar com data warehouses e ferramentas de BI para análises exploratórias e relatórios automáticos.",
+              subtopics: [
+                {
+                  title: "Fontes de dados",
+                  content: "PostgreSQL/MySQL para dados transacionais, APIs para dados em tempo real, arquivos CSV/JSON.",
+                },
+                {
+                  title: "Casos práticos",
+                  content: "Análise exploratória, geração de relatórios, identificação de anomalias, dashboards automáticos.",
+                },
+              ],
+            },
+          ],
+          bullets: [
+            "Desenvolvimento: Git + DB + filesystem para coding assistance",
+            "Suporte: CRM + KB + Slack para atendimento contextualizado",
+            "Análise: Data warehouses + APIs para insights automáticos",
+            "Cada caso combina múltiplos servidores MCP especializados",
+          ],
+        },
+        {
+          title: "Desenvolvendo Servidores MCP Personalizados",
+          description: "Como criar seus próprios servidores MCP para necessidades específicas.",
+          topics: [
+            {
+              title: "SDK e ferramentas",
+              content: "A Anthropic fornece SDKs em Python e TypeScript para facilitar o desenvolvimento de servidores MCP personalizados.",
+              subtopics: [
+                {
+                  title: "Python SDK",
+                  content: "mcp-python: biblioteca oficial com classes base e helpers para implementar servidores.",
+                },
+                {
+                  title: "TypeScript SDK", 
+                  content: "mcp-typescript: implementação completa com tipos seguros e documentação abrangente.",
+                },
+              ],
+            },
+            {
+              title: "Estrutura básica de um servidor",
+              content: "Um servidor MCP implementa handlers para recursos, ferramentas e prompts seguindo interfaces padronizadas.",
+              code: `from mcp import Server, Resource, Tool
+import asyncio
+
+server = Server("my-custom-server")
+
+@server.list_resources()
+async def list_resources():
+    return [
+        Resource(
+            uri="custom://data/users",
+            name="User Database", 
+            mimeType="application/json"
+        )
+    ]
+
+@server.read_resource()
+async def read_resource(uri: str):
+    if uri == "custom://data/users":
+        return {"users": ["alice", "bob"]}
+
+@server.list_tools()
+async def list_tools():
+    return [
+        Tool(
+            name="send_email",
+            description="Send email to user",
+            inputSchema={
+                "type": "object",
+                "properties": {
+                    "to": {"type": "string"},
+                    "subject": {"type": "string"}
+                }
+            }
+        )
+    ]
+
+if __name__ == "__main__":
+    asyncio.run(server.run())`,
+            },
+            {
+              title: "Deploy e distribuição",
+              content: "Servidores MCP podem ser distribuídos como pacotes npm/pip, imagens Docker ou executáveis standalone para facilitar instalação pelos usuários.",
+            },
+          ],
+          bullets: [
+            "SDKs oficiais em Python e TypeScript",
+            "Implemente handlers para resources, tools e prompts",
+            "Estrutura padrão com decorators e interfaces tipadas",
+            "Distribuição via npm/pip, Docker ou executáveis",
+          ],
+        },
+      ],
+    },
+  ];
