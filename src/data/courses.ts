@@ -1,6 +1,7 @@
 import avancadoImg from "@/assets/course-avancado.jpg";
 import ragImg from "@/assets/course-rag.jpg";
 import mcpImg from "@/assets/course-mcp.jpg";
+import lovableImg from "@/assets/course-lovable.jpg";
 
 export type SlideTopic = {
   title?: string;
@@ -35,7 +36,7 @@ export type Slide = {
 };
 
 export type Course = {
-  id: "introducao" | "avancado" | "ferramentas" | "rag" | "mcp";
+  id: "introducao" | "avancado" | "ferramentas" | "rag" | "mcp" | "lovable";
   title: string;
   description: string;
   image: string;
@@ -2777,6 +2778,412 @@ if __name__ == "__main__":
             "Implemente handlers para resources, tools e prompts",
             "Estrutura padrão com decorators e interfaces tipadas",
             "Distribuição via npm/pip, Docker ou executáveis",
+          ],
+        },
+      ],
+    },
+    {
+      id: "lovable",
+      title: "Boas Práticas do Lovable",
+      description: "Domine o Lovable: desde prompts eficazes até integração com GitHub e desenvolvimento híbrido com outras ferramentas de IA.",
+      image: avancadoImg,
+      imageAlt: "Ilustração de fluxo de trabalho do Lovable com GitHub e ferramentas de desenvolvimento",
+      icon: "Code2",
+      slides: [
+        {
+          title: "Introdução ao Lovable e Boas Práticas",
+          description: "Entenda o que é o Lovable e como usar suas funcionalidades de forma eficiente para desenvolvimento de aplicações web.",
+          topics: [
+            {
+              title: "O que é o Lovable",
+              content: "Lovable é uma plataforma de desenvolvimento assistido por IA que permite criar aplicações web React completas através de conversas em linguagem natural. Combina chat inteligente com preview em tempo real e capacidades de edição visual.",
+            },
+            {
+              title: "Tecnologias suportadas",
+              content: "Lovable utiliza uma stack moderna e padronizada: React + TypeScript + Vite + Tailwind CSS + shadcn/ui. Também oferece integração nativa com Supabase para backend e banco de dados.",
+              subtopics: [
+                {
+                  title: "Frontend",
+                  content: "React 18, TypeScript, Vite, Tailwind CSS, shadcn/ui components, React Router",
+                },
+                {
+                  title: "Backend opcional",
+                  content: "Supabase (auth, database, storage, edge functions) integrado nativamente",
+                },
+                {
+                  title: "Limitações",
+                  content: "Não suporta: Angular, Vue, Svelte, Next.js, apps mobile nativas, backend próprio",
+                },
+              ],
+            },
+            {
+              title: "Princípios de uso eficiente",
+              content: "Para obter melhores resultados no Lovable, siga uma abordagem iterativa e específica nas suas solicitações.",
+              subtopics: [
+                {
+                  title: "Seja específico",
+                  content: "Descreva exatamente o que quer em vez de conceitos vagos. 'Adicione um botão azul que salva o formulário' > 'Melhore a UX'",
+                },
+                {
+                  title: "Iteração incremental",
+                  content: "Faça mudanças pequenas e frequentes em vez de grandes refatorações de uma vez",
+                },
+                {
+                  title: "Use Visual Edits",
+                  content: "Para mudanças simples (texto, cores, estilos), use Visual Edits em vez do chat - é gratuito e mais rápido",
+                },
+              ],
+            },
+          ],
+          bullets: [
+            "Lovable = React + TypeScript + Tailwind + shadcn/ui + IA conversacional",
+            "Preview em tempo real + edição visual + chat inteligente",
+            "Abordagem iterativa: seja específico e faça mudanças incrementais",
+            "Use Visual Edits para mudanças simples de styling",
+          ],
+        },
+        {
+          title: "Prompts Eficazes no Lovable",
+          description: "Técnicas para escrever prompts que geram os melhores resultados no Lovable.",
+          topics: [
+            {
+              title: "Estrutura de um bom prompt",
+              content: "Prompts eficazes no Lovable seguem uma estrutura clara: contexto, ação específica, critérios de sucesso e restrições quando necessário.",
+              subtopics: [
+                {
+                  title: "1. Contexto",
+                  content: "Explique o que existe atualmente e o que você quer modificar ou adicionar",
+                },
+                {
+                  title: "2. Ação específica", 
+                  content: "Use verbos de ação claros: 'Crie', 'Adicione', 'Modifique', 'Remova', 'Refatore'",
+                },
+                {
+                  title: "3. Critérios",
+                  content: "Especifique aparência, comportamento, responsividade, acessibilidade desejados",
+                },
+                {
+                  title: "4. Restrições",
+                  content: "Mencione o que NÃO deve ser alterado ou limitações importantes",
+                },
+              ],
+            },
+            {
+              title: "Exemplos de prompts eficazes",
+              content: "Compare prompts vagos com prompts específicos para entender a diferença de qualidade nos resultados.",
+              code: `❌ VAGO: "Melhore a página"
+
+✅ ESPECÍFICO: "Adicione uma seção hero com título 'Bem-vindos', subtítulo explicativo, botão CTA azul e imagem de fundo. Deve ser responsivo e usar as cores do tema."
+
+❌ VAGO: "Arrume o formulário" 
+
+✅ ESPECÍFICO: "No formulário de contato, adicione validação em tempo real, mensagens de erro em vermelho abaixo de cada campo, e desabilite o botão submit até todos os campos estarem válidos."`,
+            },
+            {
+              title: "Dicas avançadas",
+              content: "Técnicas para obter resultados ainda melhores do Lovable.",
+              subtopics: [
+                {
+                  title: "Referências visuais",
+                  content: "Mencione sites, apps ou padrões UI conhecidos como referência de design",
+                },
+                {
+                  title: "Casos de uso",
+                  content: "Explique como o usuário vai interagir com a funcionalidade que você está pedindo",
+                },
+                {
+                  title: "Priorização",
+                  content: "Quando pedir múltiplas coisas, numere por ordem de importância",
+                },
+              ],
+            },
+          ],
+          bullets: [
+            "Estrutura: Contexto + Ação específica + Critérios + Restrições",
+            "Use verbos de ação claros e seja específico sobre o resultado desejado",
+            "Inclua referências visuais e casos de uso quando relevante",
+            "Prompts específicos > prompts vagos sempre",
+          ],
+        },
+        {
+          title: "Conectando Lovable ao GitHub",
+          description: "Como integrar seu projeto Lovable com GitHub para versionamento e colaboração.",
+          topics: [
+            {
+              title: "Por que integrar com GitHub",
+              content: "A integração GitHub oferece versionamento profissional, backup automático, colaboração em equipe e a possibilidade de desenvolver localmente ou em outras ferramentas.",
+              subtopics: [
+                {
+                  title: "Benefícios principais",
+                  content: "Versionamento Git, backup seguro, colaboração, desenvolvimento híbrido, deploy independente",
+                },
+                {
+                  title: "Sync bidirecional",
+                  content: "Mudanças no Lovable → GitHub automaticamente. Mudanças no GitHub → Lovable automaticamente",
+                },
+              ],
+            },
+            {
+              title: "Passo a passo da conexão",
+              content: "Processo simples para conectar seu projeto Lovable ao GitHub.",
+              subtopics: [
+                {
+                  title: "1. Conectar conta",
+                  content: "No Lovable, clique GitHub → Connect to GitHub → Autorize o Lovable GitHub App",
+                },
+                {
+                  title: "2. Selecionar organização",
+                  content: "Escolha a conta/organização GitHub onde o repositório será criado",
+                },
+                {
+                  title: "3. Criar repositório",
+                  content: "Clique 'Create Repository' no Lovable para gerar um novo repo com seu código",
+                },
+                {
+                  title: "Importante",
+                  content: "Apenas uma conta GitHub por conta Lovable. Não é possível importar repos existentes diretamente",
+                },
+              ],
+            },
+            {
+              title: "Gerenciamento de versões",
+              content: "Como usar o sistema de versionamento híbrido Lovable + Git.",
+              subtopics: [
+                {
+                  title: "Histórico Lovable",
+                  content: "Similar ao Google Docs, permite restaurar estados anteriores sem conhecimento Git",
+                },
+                {
+                  title: "Git tradicional",
+                  content: "Use branches, pull requests e merges para colaboração profissional",
+                },
+                {
+                  title: "Experimental",
+                  content: "Suporte limitado a branches no Lovable (Account Settings > Labs > GitHub Branch Switching)",
+                },
+              ],
+            },
+          ],
+          bullets: [
+            "GitHub → Connect to GitHub → Autorizar → Create Repository",
+            "Sync bidirecional automático entre Lovable e GitHub",
+            "Versionamento híbrido: histórico Lovable + Git tradicional",
+            "Uma conta GitHub por conta Lovable apenas",
+          ],
+        },
+        {
+          title: "Clonando e Desenvolvendo Localmente",
+          description: "Como clonar seu projeto Lovable e continuar desenvolvimento local ou com outras ferramentas de IA.",
+          topics: [
+            {
+              title: "Clonando o repositório",
+              content: "Após conectar ao GitHub, você pode clonar e trabalhar localmente mantendo sincronização.",
+              code: `# 1. Clone o repositório
+git clone https://github.com/seu-usuario/seu-projeto.git
+cd seu-projeto
+
+# 2. Instale dependências  
+npm install
+# ou
+bun install
+
+# 3. Execute localmente
+npm run dev
+# ou  
+bun dev
+
+# 4. Acesse http://localhost:5173`,
+            },
+            {
+              title: "Estrutura do projeto",
+              content: "O código no GitHub é uma aplicação web padrão que roda em qualquer ambiente.",
+              subtopics: [
+                {
+                  title: "Stack técnica",
+                  content: "Vite + React + TypeScript + Tailwind CSS - stack moderna e padrão",
+                },
+                {
+                  title: "Portabilidade",
+                  content: "Código 100% portável, pode ser hospedado em qualquer serviço (Vercel, Netlify, etc)",
+                },
+                {
+                  title: "Configuração",
+                  content: "Variáveis de ambiente e configurações devem ser gerenciadas no ambiente de hosting",
+                },
+              ],
+            },
+            {
+              title: "Workflow de desenvolvimento",
+              content: "Estratégias para combinar desenvolvimento local com Lovable de forma eficiente.",
+              subtopics: [
+                {
+                  title: "Desenvolvimento paralelo",
+                  content: "Trabalhe localmente e no Lovable simultaneamente - mudanças sincronizam automaticamente",
+                },
+                {
+                  title: "Branches para features",
+                  content: "Crie branches localmente, desenvolva features, faça PR e merge para main",
+                },
+                {
+                  title: "CI/CD com GitHub Actions",
+                  content: "Configure pipelines enquanto continua usando Lovable para desenvolvimento",
+                },
+              ],
+            },
+          ],
+          bullets: [
+            "git clone → npm install → npm run dev para desenvolvimento local",
+            "Código é aplicação web padrão, 100% portável",
+            "Sync automático: local ↔ GitHub ↔ Lovable",
+            "Use branches + PRs para features complexas",
+          ],
+        },
+        {
+          title: "Integração com Cursor e outras IAs",
+          description: "Como usar Cursor, Copilot e outras ferramentas de IA junto com o Lovable para maximum produtividade.",
+          topics: [
+            {
+              title: "Por que usar múltiplas IAs",
+              content: "Cada ferramenta de IA tem seus pontos fortes. Combinar Lovable com outras ferramentas maximiza produtividade e qualidade do código.",
+              subtopics: [
+                {
+                  title: "Pontos fortes do Lovable",
+                  content: "Prototipagem rápida, UI/UX, integração Supabase, mudanças visuais, arquitetura inicial",
+                },
+                {
+                  title: "Pontos fortes do Cursor",
+                  content: "Refatoração complexa, debugging detalhado, lógica de negócio, testes, performance",
+                },
+                {
+                  title: "Pontos fortes do Copilot",
+                  content: "Autocompletar código, padrões comuns, documentação, pequenas funções utilitárias",
+                },
+              ],
+            },
+            {
+              title: "Workflow híbrido recomendado",
+              content: "Estratégia para usar cada ferramenta no momento certo do desenvolvimento.",
+              subtopics: [
+                {
+                  title: "1. Prototipagem inicial (Lovable)",
+                  content: "Crie a estrutura base, componentes UI, layout responsivo e integrações básicas",
+                },
+                {
+                  title: "2. Lógica complexa (Cursor)",
+                  content: "Implemente algoritmos, validações complexas, integração com APIs externas, testes",
+                },
+                {
+                  title: "3. Refinamento (Lovable)",
+                  content: "Ajustes visuais, animações, responsividade, acessibilidade",
+                },
+                {
+                  title: "4. Otimização (Cursor)",
+                  content: "Performance, SEO, error handling, logging, monitoramento",
+                },
+              ],
+            },
+            {
+              title: "Configuração do Cursor",
+              content: "Como configurar o Cursor para trabalhar eficientemente com projetos Lovable.",
+              code: `// .cursorrules (na raiz do projeto)
+// Configurações específicas para projetos Lovable
+
+- Este é um projeto React + TypeScript + Tailwind + shadcn/ui
+- Mantenha a estrutura de componentes existente
+- Use apenas as cores/tokens definidos em index.css  
+- Prefira shadcn/ui components sobre componentes customizados
+- Mantenha responsividade mobile-first
+- Use semantic HTML para acessibilidade
+- Siga patterns estabelecidos no projeto
+
+// Quando sugerir mudanças:
+- Explique o impacto da mudança
+- Considere compatibilidade com Lovable
+- Prefira mudanças incrementais
+- Documente breaking changes`,
+            },
+          ],
+          bullets: [
+            "Lovable: prototipagem e UI. Cursor: lógica e refatoração",
+            "Workflow: Lovable → Cursor → Lovable → Cursor iterativamente",
+            "Configure .cursorrules para manter padrões do projeto",
+            "Sincronização automática mantém todas as ferramentas atualizadas",
+          ],
+        },
+        {
+          title: "Deploy e Hospedagem Independente",
+          description: "Como hospedar sua aplicação Lovable em outras plataformas mantendo o desenvolvimento na plataforma.",
+          topics: [
+            {
+              title: "Opções de hospedagem",
+              content: "Sua aplicação Lovable pode ser hospedada em qualquer serviço de hosting moderno.",
+              subtopics: [
+                {
+                  title: "Plataformas recomendadas",
+                  content: "Vercel, Netlify, Railway, Render, DigitalOcean App Platform, AWS Amplify",
+                },
+                {
+                  title: "Deploy automático",
+                  content: "Configure CI/CD para deploy automático quando fazer push para main no GitHub",
+                },
+                {
+                  title: "Variáveis de ambiente",
+                  content: "Configure secrets e environment variables na plataforma de hosting",
+                },
+              ],
+            },
+            {
+              title: "Configuração no Vercel",
+              content: "Exemplo prático de deploy no Vercel com CI/CD automático.",
+              code: `# 1. Conecte repositório GitHub ao Vercel
+# 2. Configure build settings:
+Build Command: npm run build
+Output Directory: dist
+Install Command: npm install
+
+# 3. Configure environment variables no dashboard
+# 4. Deploy automático a cada push para main
+
+# vercel.json (opcional)
+{
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@vercel/static-build"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/index.html"
+    }
+  ]
+}`,
+            },
+            {
+              title: "Domínio customizado",
+              content: "Como configurar seu próprio domínio para a aplicação.",
+              subtopics: [
+                {
+                  title: "Lovable domains",
+                  content: "yoursite.lovable.app → requires paid plan para domínio customizado",
+                },
+                {
+                  title: "Hosting independente",
+                  content: "Use qualquer domínio quando hospedar em Vercel/Netlify etc",
+                },
+                {
+                  title: "DNS configuration",
+                  content: "Configure CNAME ou A records para apontar para sua plataforma de hosting",
+                },
+              ],
+            },
+          ],
+          bullets: [
+            "Código Lovable funciona em qualquer plataforma de hosting moderna",
+            "Configure CI/CD para deploy automático via GitHub",
+            "Gerencie environment variables na plataforma de hosting",
+            "Domínio customizado disponível em qualquer hosting independente",
           ],
         },
       ],
