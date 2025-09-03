@@ -1,4 +1,5 @@
 import avancadoImg from "@/assets/course-avancado.jpg";
+import ragImg from "@/assets/course-rag.jpg";
 
 export type SlideTopic = {
   title?: string;
@@ -33,7 +34,7 @@ export type Slide = {
 };
 
 export type Course = {
-  id: "introducao" | "avancado" | "ferramentas";
+  id: "introducao" | "avancado" | "ferramentas" | "rag";
   title: string;
   description: string;
   image: string;
@@ -2179,8 +2180,280 @@ export const courses: Course[] = [
             "Identifique quick wins por setor e função",
             "Mitigue riscos e garanta compliance",
             "Planeje evolução de longo prazo",
-          ],
+         ],
         },
+     ],
+   },
+   {
+     id: "rag",
+     title: "RAG - Retrieval-Augmented Generation",
+     description: "Aprenda a combinar recuperação de informações com IA generativa para criar sistemas de perguntas e respostas precisos e atualizados.",
+     image: ragImg,
+     imageAlt: "Ilustração conceitual de RAG - sistema conectando base de dados a IA generativa",
+     icon: "Database",
+     slides: [
+       {
+         title: "O que é RAG (Retrieval-Augmented Generation)",
+         description: "Entenda como RAG combina recuperação de informações com geração de texto para criar respostas mais precisas e atualizadas.",
+         topics: [
+           {
+             title: "Definição de RAG",
+             content: "RAG (Retrieval-Augmented Generation) é uma arquitetura que combina sistemas de recuperação de informações com modelos de linguagem generativos. Em vez de confiar apenas no conhecimento pré-treinado do modelo, RAG primeiro busca informações relevantes em uma base de dados externa e depois usa essas informações como contexto para gerar respostas mais precisas e atualizadas.",
+           },
+           {
+             title: "Por que RAG é necessário?",
+             content: "LLMs têm limitações importantes: conhecimento limitado pela data de treino, tendência a 'alucinar' informações, e falta de acesso a dados específicos da empresa. RAG resolve esses problemas fornecendo informações factuais atualizadas como contexto para a geração.",
+             subtopics: [
+               {
+                 title: "Limitações dos LLMs puros",
+                 content: "Conhecimento desatualizado, alucinações, falta de dados específicos do domínio ou empresa.",
+               },
+               {
+                 title: "Benefícios do RAG",
+                 content: "Respostas baseadas em fontes confiáveis, informações sempre atualizadas, controle sobre o conhecimento utilizado.",
+               },
+             ],
+           },
+         ],
+         bullets: [
+           "RAG = Recuperação de informações + Geração de texto",
+           "Resolve limitações de conhecimento dos LLMs",
+           "Garante respostas baseadas em fontes confiáveis",
+           "Permite atualização contínua do conhecimento",
+         ],
+       },
+       {
+         title: "Arquitetura e Componentes do RAG",
+         description: "Conheça os componentes essenciais de um sistema RAG e como eles trabalham juntos.",
+         topics: [
+           {
+             title: "Componentes principais",
+             content: "Um sistema RAG típico possui três componentes principais: o indexador (processa e armazena documentos), o recuperador (busca informações relevantes) e o gerador (produz respostas usando o contexto recuperado).",
+             subtopics: [
+               {
+                 title: "1. Indexador",
+                 content: "Processa documentos, divide em chunks, gera embeddings e armazena em vector database. Responsável por preparar o conhecimento para busca semântica.",
+               },
+               {
+                 title: "2. Recuperador",
+                 content: "Recebe a pergunta do usuário, gera embedding da query, busca documentos similares no vector database e retorna os mais relevantes.",
+               },
+               {
+                 title: "3. Gerador",
+                 content: "LLM que recebe a pergunta original + contexto recuperado e gera uma resposta coerente e fundamentada nas informações fornecidas.",
+               },
+             ],
+           },
+           {
+             title: "Fluxo de funcionamento",
+             content: "1) Usuário faz pergunta → 2) Sistema busca documentos relevantes → 3) Contextualiza a pergunta com informações encontradas → 4) LLM gera resposta baseada no contexto → 5) Retorna resposta com fontes.",
+           },
+         ],
+         bullets: [
+           "Indexador: processa e armazena documentos como embeddings",
+           "Recuperador: busca informações relevantes para a query",
+           "Gerador: LLM que produz respostas contextualizadas",
+           "Vector Database: armazena embeddings para busca semântica",
+         ],
+       },
+       {
+         title: "Embeddings e Vector Databases",
+         description: "Fundamentos da busca semântica que torna o RAG possível.",
+         topics: [
+           {
+             title: "O que são embeddings",
+             content: "Embeddings são representações numéricas (vetores) de texto que capturam o significado semântico. Textos com significados similares têm embeddings próximos no espaço vetorial, permitindo busca por similaridade semântica em vez de apenas palavras-chave.",
+           },
+           {
+             title: "Vector Databases",
+             content: "Bancos de dados especializados em armazenar e buscar vetores de alta dimensionalidade. Permitem busca por similaridade eficiente usando algoritmos como HNSW, IVF ou LSH.",
+             subtopics: [
+               {
+                 title: "Opções populares",
+                 content: "Pinecone, Weaviate, Qdrant, Chroma, FAISS, Supabase Vector, Postgres com pgvector.",
+               },
+               {
+                 title: "Métricas de similaridade",
+                 content: "Cosine similarity, dot product, euclidean distance - cada uma adequada para diferentes tipos de embeddings.",
+               },
+             ],
+           },
+           {
+             title: "Modelos de embedding",
+             content: "Diferentes modelos para gerar embeddings: OpenAI text-embedding-ada-002, Sentence Transformers, modelos multilíngues como multilingual-e5. A escolha impacta qualidade e custo.",
+           },
+         ],
+         bullets: [
+           "Embeddings capturam significado semântico como vetores",
+           "Vector databases permitem busca por similaridade eficiente",
+           "Múltiplas opções de modelos e bancos vetoriais",
+           "Escolha do modelo impacta qualidade e custo do sistema",
+         ],
+       },
+       {
+         title: "Estratégias de Chunking",
+         description: "Como dividir documentos para otimizar recuperação e geração.",
+         topics: [
+           {
+             title: "Por que fazer chunking",
+             content: "Documentos longos não cabem no contexto dos LLMs e embeddings de textos muito longos perdem granularidade semântica. Chunking divide o conteúdo em pedaços menores e mais focados, melhorando a precisão da recuperação.",
+           },
+           {
+             title: "Estratégias de divisão",
+             content: "Diferentes abordagens para dividir texto, cada uma com vantagens específicas dependendo do tipo de conteúdo e caso de uso.",
+             subtopics: [
+               {
+                 title: "Fixed size chunking",
+                 content: "Divisão em tamanhos fixos (ex: 500 tokens). Simples mas pode quebrar contexto importante no meio de frases ou parágrafos.",
+               },
+               {
+                 title: "Semantic chunking",
+                 content: "Divisão baseada em significado semântico, preservando tópicos coesos. Mais complexo mas mantém melhor contexto.",
+               },
+               {
+                 title: "Hierarchical chunking",
+                 content: "Cria hierarquia de chunks (capítulo → seção → parágrafo) permitindo busca em diferentes níveis de granularidade.",
+               },
+               {
+                 title: "Overlap chunking",  
+                 content: "Chunks com sobreposição para evitar perda de contexto nas bordas. Aumenta redundância mas melhora recuperação.",
+               },
+             ],
+           },
+           {
+             title: "Considerações práticas",
+             content: "Tamanho ideal varia por uso (128-512 tokens típico), considere limite de contexto do LLM, teste diferentes estratégias com seus dados específicos e monitore qualidade da recuperação.",
+           },
+         ],
+         bullets: [
+           "Chunking melhora precisão da busca semântica",
+           "Fixed size: simples, semantic: preserva contexto",
+           "Overlap evita perda de informação nas bordas",
+           "Tamanho ideal: 128-512 tokens na maioria dos casos",
+         ],
+       },
+       {
+         title: "Implementação Prática de RAG",
+         description: "Passos práticos para implementar um sistema RAG funcional.",
+         topics: [
+           {
+             title: "Stack tecnológico comum",
+             content: "Ferramentas e bibliotecas populares para cada componente do sistema RAG.",
+             subtopics: [
+               {
+                 title: "Frameworks",
+                 content: "LangChain, LlamaIndex, Haystack - abstraem complexidade e fornecem componentes prontos.",
+               },
+               {
+                 title: "Vector Stores",
+                 content: "Pinecone (managed), Chroma (local), Supabase Vector, Weaviate (self-hosted ou cloud).",
+               },
+               {
+                 title: "LLMs",
+                 content: "OpenAI GPT-4, Anthropic Claude, modelos open source via Ollama ou HuggingFace.",
+               },
+               {
+                 title: "Embeddings",
+                 content: "OpenAI embeddings, Sentence Transformers, Cohere embeddings, modelos multilíngues.",
+               },
+             ],
+           },
+           {
+             title: "Pipeline de desenvolvimento",
+             content: "1) Coleta e preparação de dados → 2) Chunking e processamento → 3) Geração de embeddings → 4) Indexação no vector store → 5) Implementação da busca → 6) Integração com LLM → 7) Interface de usuário.",
+           },
+           {
+             title: "Código exemplo básico",
+             content: "Exemplo simplificado usando LangChain + OpenAI:",
+             code: `from langchain.document_loaders import TextLoader
+from langchain.text_splitter import CharacterTextSplitter  
+from langchain.embeddings import OpenAIEmbeddings
+from langchain.vectorstores import Chroma
+from langchain.llms import OpenAI
+from langchain.chains import RetrievalQA
+
+# 1. Carrega documentos
+loader = TextLoader('docs.txt')
+documents = loader.load()
+
+# 2. Divide em chunks
+text_splitter = CharacterTextSplitter(chunk_size=500)
+texts = text_splitter.split_documents(documents)
+
+# 3. Cria vector store
+embeddings = OpenAIEmbeddings()
+vectorstore = Chroma.from_documents(texts, embeddings)
+
+# 4. Cria chain RAG
+llm = OpenAI(temperature=0)
+qa_chain = RetrievalQA.from_chain_type(
+    llm=llm,
+    retriever=vectorstore.as_retriever()
+)
+
+# 5. Faz pergunta
+response = qa_chain.run("Qual é o resumo do documento?")`,
+           },
+         ],
+         bullets: [
+           "LangChain/LlamaIndex simplificam desenvolvimento",
+           "Pipeline: dados → chunks → embeddings → índice → busca → geração",
+           "Teste com dados pequenos antes de escalar",
+           "Monitore qualidade das respostas continuamente",
+         ],
+       },
+       {
+         title: "Otimização e Avaliação",
+         description: "Como melhorar performance e medir qualidade do sistema RAG.",
+         topics: [
+           {
+             title: "Métricas de avaliação",
+             content: "Diferentes aspectos para avaliar um sistema RAG efetivo.",
+             subtopics: [
+               {
+                 title: "Qualidade da recuperação",
+                 content: "Precision@K, Recall@K, MRR (Mean Reciprocal Rank) - medem se documentos relevantes estão sendo recuperados.",
+               },
+               {
+                 title: "Qualidade da geração",
+                 content: "BLEU, ROUGE, BERTScore para similaridade textual. Métricas humanas: relevância, factualidade, completude.",
+               },
+               {
+                 title: "Métricas de negócio",
+                 content: "Taxa de resolução de perguntas, satisfação do usuário, tempo de resposta, custo por query.",
+               },
+             ],
+           },
+           {
+             title: "Técnicas de otimização",
+             content: "Estratégias para melhorar performance do sistema RAG.",
+             subtopics: [
+               {
+                 title: "Query expansion",
+                 content: "Expandir pergunta com sinônimos ou termos relacionados para melhorar recuperação.",
+               },
+               {
+                 title: "Re-ranking",
+                 content: "Aplicar segundo modelo para reordenar resultados da busca inicial por relevância.",
+               },
+               {
+                 title: "Hybrid search",
+                 content: "Combinar busca semântica (vetores) com busca tradicional (BM25) para melhor cobertura.",
+               },
+               {
+                 title: "Fine-tuning",
+                 content: "Ajustar modelo de embedding ou LLM para domínio específico quando há dados suficientes.",
+               },
+             ],
+           },
+         ],
+         bullets: [
+           "Avalie recuperação (Precision/Recall) e geração (qualidade/factualidade)",
+           "Query expansion e re-ranking melhoram recuperação",
+           "Hybrid search combina semântica + palavra-chave",
+           "Fine-tuning para domínios específicos quando viável",
+         ],
+       },
      ],
    },
  ];
